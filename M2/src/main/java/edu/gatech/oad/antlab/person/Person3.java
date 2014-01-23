@@ -1,5 +1,6 @@
 package edu.gatech.oad.antlab.person;
 /**
+ *  Test
  *  A simple class for person 3
  *  returns their name and a
  *  reversed string 
@@ -42,6 +43,6 @@ public class Person3 {
 	 * @return the reversed string
 	 */
 	private String calc(String input) {
-	  return StringBuilder(input).reverse().toString()
+	  return new StringBuilder(input).reverse().toString()
 	}
 }
