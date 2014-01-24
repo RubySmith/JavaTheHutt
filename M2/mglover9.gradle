@@ -22,7 +22,7 @@ version = '1.0'
 //Define the contents of the jar file
 jar {
     manifest {
-        attributes 'Implementation-Title': 'KatPhamBuild', 'Implementation-Version': version , 'Main-Class' : 'package edu.gatech.oad.antlab.pkg1.AntLabMain', 'Class-Path' : '.../.../lib/resources.jar'
+        attributes 'Implementation-Title': 'MickBuild', 'Implementation-Version': version , 'Main-Class' : 'package edu.gatech.oad.antlab.pkg1.AntLabMain', 'Class-Path' : '.../.../lib/resources.jar'
 
     }
 }
