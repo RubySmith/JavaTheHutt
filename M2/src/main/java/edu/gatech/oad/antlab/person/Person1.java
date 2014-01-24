@@ -33,11 +33,16 @@ public class Person1 {
 		char[] letters= input.toCharArray();
 		char[] word=new char[letters.length];
 		for (int i=0;i<word.length;i++){
-			if (i==0) word[length-2]=letters[i];
-			else if (i==1) word[length-1]=letters[i];
+			if (i==0) word[word.length-2]=letters[i];
+			else if (i==1) word[word.length-1]=letters[i];
 			else word[i-2]=letters[i];
 		}
-		return word;
+
+		String str = "";
+		for (char c: word)
+			str = str + c;
+		System.out.println("string: " + str);
+		return word.toString();
 	}
 	
 	/**
