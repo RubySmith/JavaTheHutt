@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Potato</string>
+    <string name="action_settings">Settings</string>
+    <string name="String_Welcome">WELCOME</string>
+    <string name="String_Register">Register</string>
+    <string name="String_Login">Tap to Login</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="String_Log">Login</string>
+    <string name="title_activity_success">SuccessActivity</string>
+    <string name="String_Username">Username:</string>
+    <string name="String_Password">Password:</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="String_NewUser">Welcome New User</string>
+    <string name="String_NewUserName">Username:</string>
+    <string name="String_NewPassword">Password:</string>
+    <string name="String_CreateAccount">Create Account</string>
+    <string name="String_ConfirmPassword">Confirm Password:</string>
+
+</resources>
