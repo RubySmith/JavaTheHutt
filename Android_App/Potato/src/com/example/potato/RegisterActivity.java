@@ -39,7 +39,7 @@ public class RegisterActivity extends Activity {
 		}
 		String passWord=password.getText().toString();
 		if (passWord.length()<2){
-			Toast.makeText(getApplicationContext(), "Username taken. Please choose again.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "Password too short", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		String cpw=confirmedPW.getText().toString();
