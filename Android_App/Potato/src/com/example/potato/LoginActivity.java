@@ -28,7 +28,9 @@ public class LoginActivity extends Activity {
 	}
 	
 	public void onLogin(View v){
-		if (username.getText().toString().equals("admin") && password.getText().toString().equals("pass123")){
+		String userName= username.getText().toString();
+		String passWord= password.getText().toString();
+		if (Database.check(userName,passWord)){
 			Intent intent = new Intent(this, SuccessActivity.class);
 			startActivity(intent);
 		}else{

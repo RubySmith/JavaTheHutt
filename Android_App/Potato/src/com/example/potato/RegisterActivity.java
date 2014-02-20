@@ -1,6 +1,7 @@
 package com.example.potato;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -31,12 +32,29 @@ public class RegisterActivity extends Activity {
 	}
 	
 	public void onClickRegisterNewUser(View v){
-		if (password.equals(confirmedPW)){
-			
-		}else{
+		String userName=username.getText().toString();
+		if (userName.length()<2){
+			Toast.makeText(getApplicationContext(), "Username too short.", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		String passWord=password.getText().toString();
+		if (passWord.length()<2){
+			Toast.makeText(getApplicationContext(), "Username taken. Please choose again.", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		String cpw=confirmedPW.getText().toString();
+		if (passWord.equals(cpw)&&Database.add(userName, passWord)){
+			Intent intent = new Intent(this, SuccessActivity.class);
+			startActivity(intent);
+		}
+		else if (!Database.checkAdd(userName)){
+			Toast.makeText(getApplicationContext(), "Username taken. Please choose again.", Toast.LENGTH_SHORT).show();
+		}
+		else{
 			Toast.makeText(getApplicationContext(), "Passwords do not match. Try again.", Toast.LENGTH_SHORT).show();
 		}
 		
 	}
+	
 
 }
