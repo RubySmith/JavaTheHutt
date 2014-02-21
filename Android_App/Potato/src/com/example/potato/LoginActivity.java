@@ -12,6 +12,12 @@ public class LoginActivity extends Activity {
 	private EditText username;
 	private EditText password;
 
+	/**
+	 * Creates field to input username
+	 * and password.
+	 * 
+	 * @author Katherine Pham	
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,6 +33,18 @@ public class LoginActivity extends Activity {
 		return true;
 	}
 	
+	/**
+	 * Checks strings of the username
+	 * and password provided by the 
+	 * user and checks to see if they
+	 * are valid. If they are then
+	 * the user is taken to the success
+	 * screen and if not then the user
+	 * is prompted to try again. 
+	 * 
+	 * @author Will Cely
+	 * @author Katherine Pham	
+	 */
 	public void onLogin(View v){
 		String userName= username.getText().toString();
 		String passWord= password.getText().toString();
