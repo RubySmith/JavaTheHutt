@@ -38,6 +38,9 @@ public class CreateActivity extends Activity {
 		if (accountName.length()<2){
 			Toast.makeText(getApplicationContext(), "Account name too short.", Toast.LENGTH_SHORT).show();
 			return;
+		} else if(accountName.length()>20){
+			Toast.makeText(getApplicationContext(), "Account name too long.", Toast.LENGTH_SHORT).show();
+			return;
 		} else {
 			Account newAccount = new Account(accountName);
 			Intent intent = new Intent(this, SuccessActivity.class);
