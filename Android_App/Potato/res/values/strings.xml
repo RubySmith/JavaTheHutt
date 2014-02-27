@@ -17,5 +17,16 @@
     <string name="String_NewPassword">Password:</string>
     <string name="String_CreateAccount">Create Account</string>
     <string name="String_ConfirmPassword">Confirm Password:</string>
+    <string name="String_AccountList"></string>
+    <string name="NewAccountName"></string>
+    <string name="String_NewAccountName"></string>
+    <string name="String_AccountName">Enter Account Name</string>
+    <string name="String_welcome">Welcome to your profile</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_create">CreateActivity</string>
+    <string name="title_activity_success_activity2">SuccessActivity2</string>
+    <string name="CreateNewAccount">Create New Account</string>
+    <string name="String_CreateNewAccount">Create New Account</string>
 
 </resources>

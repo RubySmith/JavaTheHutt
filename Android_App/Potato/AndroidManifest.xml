@@ -34,6 +34,18 @@
             android:name="com.example.potato.RegisterActivity"
             android:label="@string/title_activity_register" >
         </activity>
+        <activity
+            android:name="com.example.potato.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.example.potato.CreateActivity"
+            android:label="@string/title_activity_create" >
+        </activity>
+        <activity
+            android:name="com.example.potato.SuccessActivity2"
+            android:label="@string/title_activity_success_activity2" >
+        </activity>
     </application>
 
 </manifest>
