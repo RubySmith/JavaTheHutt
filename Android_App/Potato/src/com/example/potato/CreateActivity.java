@@ -47,5 +47,9 @@ public class CreateActivity extends Activity {
 			startActivity(intent);
 		}
 	}
+	public void onClickCancel(View v) {
+		Intent intent = new Intent(this, ProfileActivity.class);
+		startActivity(intent);
+	}
 
 }

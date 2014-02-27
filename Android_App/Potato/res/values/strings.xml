@@ -28,5 +28,6 @@
     <string name="title_activity_success_activity2">SuccessActivity2</string>
     <string name="CreateNewAccount">Create New Account</string>
     <string name="String_CreateNewAccount">Create New Account</string>
+    <string name="String_Cancel">Cancel</string>
 
 </resources>
