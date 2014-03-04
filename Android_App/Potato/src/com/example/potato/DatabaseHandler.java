@@ -1,5 +1,7 @@
 package com.example.potato;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -42,5 +44,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
+    
+    // Adding new contact
+	public void addProfile(Profile profile) {
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_USERNAME, profile.getUsername()); // Contact Username
+		values.put(KEY_PASSWORD, profile.getPassword()); // Contact Password
+
+		// Inserting Row
+		db.insert(TABLE_PROFILES, null, values);
+		db.close(); // Closing database connection
+	}
+	
+	// Getting single contact
+	public Profile getProfile(String username) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_PROFILES, new String[] {
+				KEY_USERNAME, KEY_PASSWORD }, KEY_USERNAME + "=?",
+				new String[] { String.valueOf(username) }, null, null, null, null); //this line seems REALLY sketch, check SQL validity
+		if (cursor != null)
+			cursor.moveToFirst();
+
+		Profile profile = new Profile(cursor.getString(0), cursor.getString(1)); //hmmmmmm
+		// return profile
+		return profile;
+	}
 
 }
