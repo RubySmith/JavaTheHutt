@@ -50,21 +50,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_USERNAME, profile.getUsername()); // Contact Username
-		values.put(KEY_PASSWORD, profile.getPassword()); // Contact Password
+		values.put(KEY_USERNAME, profile.getUsername()); // Profile Username
+		values.put(KEY_PASSWORD, profile.getPassword()); // Profile Password
 
 		// Inserting Row
 		db.insert(TABLE_PROFILES, null, values);
 		db.close(); // Closing database connection
 	}
 	
-	// Getting single contact
+	// Getting single profile
 	public Profile getProfile(String username) {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(TABLE_PROFILES, new String[] {
 				KEY_USERNAME, KEY_PASSWORD }, KEY_USERNAME + "=?",
-				new String[] { String.valueOf(username) }, null, null, null, null); //this line seems REALLY sketch, check SQL validity
+				new String[] { String.valueOf(username) }, null, null, null, null); //check SQL validity
 		if (cursor != null)
 			cursor.moveToFirst();
 
