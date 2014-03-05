@@ -109,5 +109,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// return count
 		return cursor.getCount();
 	}
+	
+	// Updating single profile
+	public int updateProfile(Profile profile) {
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_USERNAME, profile.getUsername());
+		values.put(KEY_PASSWORD, profile.getPassword());
+
+		// updating row
+		return db.update(TABLE_PROFILES, values, KEY_USERNAME + " = ?", //check SQL validity
+				new String[] { String.valueOf(profile.getUsername()) });
+	}
+	
+	// Deleting single profile
+	public void deleteProfile(Profile profile) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_PROFILES, KEY_USERNAME + " = ?",
+				new String[] { String.valueOf(profile.getUsername()) });
+		db.close();
+	}
 
 }
