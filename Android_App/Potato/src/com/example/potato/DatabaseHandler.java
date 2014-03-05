@@ -63,7 +63,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(TABLE_PROFILES, new String[] {
-				KEY_USERNAME, KEY_PASSWORD }, KEY_USERNAME + "=?",
+				KEY_USERNAME, KEY_PASSWORD }, KEY_USERNAME + "=?", //accepts username as parameter
 				new String[] { String.valueOf(username) }, null, null, null, null); //check SQL validity
 		if (cursor != null)
 			cursor.moveToFirst();
