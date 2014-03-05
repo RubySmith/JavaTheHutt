@@ -1,4 +1,7 @@
 package com.example.potato;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -71,6 +74,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		Profile profile = new Profile(cursor.getString(0), cursor.getString(1)); //hmmmmmm
 		// return profile
 		return profile;
+	}
+	
+	// Getting all profiles
+	public List<Profile> getAllProfiles() {
+		List<Profile> profileList = new ArrayList<Profile>();
+		// Select All Query
+		String selectQuery = "SELECT  * FROM " + TABLE_PROFILES;
+
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Profile profile = new Profile(cursor.getString(0),
+						cursor.getString(1));
+				// Adding profile to list
+				profileList.add(profile);
+			} while (cursor.moveToNext());
+		}
+
+		// return profile list
+		return profileList;
+	}
+	
+	// Getting profiles count
+	public int getProfilesCount() {
+		String countQuery = "SELECT  * FROM " + TABLE_PROFILES;
+		SQLiteDatabase db = this.getReadableDatabase();
+		Cursor cursor = db.rawQuery(countQuery, null);
+		cursor.close();
+
+		// return count
+		return cursor.getCount();
 	}
 
 }
