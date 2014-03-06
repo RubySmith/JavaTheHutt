@@ -3,6 +3,7 @@ package com.example.potato;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ public class RegisterActivity extends Activity {
 	private EditText username;
 	private EditText password;
 	private EditText confirmedPW;
+	DatabaseHandler db=new DatabaseHandler(this);
 	
 	/**
 	 * Creates field to input username, password,
@@ -63,17 +65,23 @@ public class RegisterActivity extends Activity {
 			return;
 		}
 		String cpw=confirmedPW.getText().toString();
-		if (passWord.equals(cpw)&&Database.add(userName, passWord)){
+		if (passWord.equals(cpw)&&checkAdd(userName)){
+			db.addProfile(new Profile(userName, passWord));
 			Intent intent = new Intent(this, SuccessActivity.class);
 			startActivity(intent);
 		}
-		else if (!Database.checkAdd(userName)){
+		else if (!checkAdd(userName)){
 			Toast.makeText(getApplicationContext(), "Username taken. Please choose again.", Toast.LENGTH_SHORT).show();
 		}
 		else{
 			Toast.makeText(getApplicationContext(), "Passwords do not match. Try again.", Toast.LENGTH_SHORT).show();
 		}
 		
+	}
+	
+	public boolean checkAdd(String username){
+		//Profile profile=db.getProfile(username);
+		return true;
 	}
 	
 

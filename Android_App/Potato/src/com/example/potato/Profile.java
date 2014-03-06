@@ -30,5 +30,5 @@ public class Profile {
 	public void addAccount(String name){
 		accounts.add(new Account(name));
 	}
-	 
+	
 }

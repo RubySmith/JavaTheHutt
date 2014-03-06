@@ -7,6 +7,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+/**
+ * SQLite implementation for
+ * user database
+ * 
+ * @author Shehmeer Jiwani	
+ */
 
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -61,6 +69,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close(); // Closing database connection
 	}
 	
+	
 	// Getting single profile
 	public Profile getProfile(String username) {
 		SQLiteDatabase db = this.getReadableDatabase();
@@ -70,8 +79,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(username) }, null, null, null, null); //check SQL validity
 		if (cursor != null)
 			cursor.moveToFirst();
-
+		try{
+			if (cursor==null||cursor.getString(0)==null||cursor.getString(1)==null) return null;
+		}catch (Exception E){
+			return null;
+		}
 		Profile profile = new Profile(cursor.getString(0), cursor.getString(1)); //hmmmmmm
+		
 		// return profile
 		return profile;
 	}

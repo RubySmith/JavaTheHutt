@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class LoginActivity extends Activity {
 	private EditText username;
 	private EditText password;
+	DatabaseHandler db=new DatabaseHandler(this);
 
 	/**
 	 * Creates field to input username
@@ -48,7 +49,7 @@ public class LoginActivity extends Activity {
 	public void onLogin(View v){
 		String userName= username.getText().toString();
 		String passWord= password.getText().toString();
-		if (Database.check(userName,passWord)){
+		if (check(userName,passWord)){
 			Intent intent = new Intent(this, ProfileActivity.class);
 			startActivity(intent);
 		}else{
@@ -56,5 +57,16 @@ public class LoginActivity extends Activity {
 			
 		}
 	}
+	
+	public boolean check(String userName, String passToChk){
+		Profile profile=db.getProfile(userName);
+		if (profile==null){
+			Toast.makeText(getApplicationContext(), "Username Invalid", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		else if (!profile.getPassword().equals(passToChk)) return false;
+		else return true;
+	}
+	
 
 }
