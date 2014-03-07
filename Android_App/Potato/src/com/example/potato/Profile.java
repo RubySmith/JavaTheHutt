@@ -27,8 +27,13 @@ public class Profile {
 		return password;
 	}
 	
-	public void addAccount(String name){
-		accounts.add(new Account(name));
+	public List<Account> getAccounts(){
+		return accounts;
 	}
+	
+	public void addAccount(Account a){
+		accounts.add(a);
+	}
+	
 	
 }

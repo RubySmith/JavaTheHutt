@@ -8,14 +8,14 @@ package com.example.potato;
 public class Transaction {
 	private String source;
 	private String destination;
-	private int ammount;
-	public Transaction(String source, String destination, int ammount){
+	private double ammount;
+	public Transaction(String source, String destination, double ammount){
 		this.source = source;
 		this.destination = destination;
 		this.ammount = ammount;
 	}
 	
-	public String getSource(){
+	public String getSource(){ 
 		return source;
 	}
 	
@@ -23,7 +23,7 @@ public class Transaction {
 		return destination;
 	}
 	
-	public int getAmmount(){
+	public double getAmmount(){
 		return ammount;
 	}
 	

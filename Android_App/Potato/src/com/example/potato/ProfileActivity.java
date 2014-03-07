@@ -24,6 +24,7 @@ public class ProfileActivity extends Activity {
 	public void onClickCreateAccount(View v){
 		Intent intent = new Intent(this, CreateActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 }

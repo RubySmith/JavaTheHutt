@@ -29,5 +29,8 @@
     <string name="CreateNewAccount">Create New Account</string>
     <string name="String_CreateNewAccount">Create New Account</string>
     <string name="String_Cancel">Cancel</string>
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_accounts">AccountsActivity</string>
+    <string name="title_activity_transaction">TransactionActivity</string>
 
 </resources>

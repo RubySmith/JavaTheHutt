@@ -11,12 +11,15 @@ import android.widget.Toast;
 public class CreateActivity extends Activity {
 	
 	private EditText accountname;
+	private EditText balance;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create);
 		accountname = (EditText)findViewById(R.id.editText1);
+		balance= (EditText)findViewById(R.id.editText2);
 	}
 
 	@Override
@@ -35,6 +38,13 @@ public class CreateActivity extends Activity {
 	
 	public void onClickCreateNewAccount(View v) {
 		String accountName=accountname.getText().toString();
+		double bal=0.00;
+		try{
+			bal=Double.parseDouble(balance.getText().toString());
+		} catch (NumberFormatException e){
+			Toast.makeText(getApplicationContext(), "Please enter a valid balance", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		if (accountName.length()<2){
 			Toast.makeText(getApplicationContext(), "Account name too short.", Toast.LENGTH_SHORT).show();
 			return;
@@ -43,13 +53,19 @@ public class CreateActivity extends Activity {
 			return;
 		} else {
 			Account newAccount = new Account(accountName);
-			Intent intent = new Intent(this, SuccessActivity.class);
+			newAccount.addTransaction("Starting Balance", accountName, bal);
+			Current.getProfile().addAccount(newAccount);
+			Current.setAccount(newAccount);
+			
+			Intent intent = new Intent(this, AccountActivity.class);
 			startActivity(intent);
+			finish();
 		}
 	}
 	public void onClickCancel(View v) {
-		Intent intent = new Intent(this, ProfileActivity.class);
+		Intent intent = new Intent(this, AccountsActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 }

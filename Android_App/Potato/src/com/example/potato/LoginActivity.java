@@ -50,8 +50,10 @@ public class LoginActivity extends Activity {
 		String userName= username.getText().toString();
 		String passWord= password.getText().toString();
 		if (check(userName,passWord)){
-			Intent intent = new Intent(this, ProfileActivity.class);
+			Current.setProfile(db.getProfile(userName));
+			Intent intent = new Intent(this, AccountsActivity.class);
 			startActivity(intent);
+			finish();
 		}else{
 			Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
 			

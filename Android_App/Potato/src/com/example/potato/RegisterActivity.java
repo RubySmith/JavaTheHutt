@@ -67,8 +67,10 @@ public class RegisterActivity extends Activity {
 		String cpw=confirmedPW.getText().toString();
 		if (passWord.equals(cpw)&&checkAdd(userName)){
 			db.addProfile(new Profile(userName, passWord));
-			Intent intent = new Intent(this, SuccessActivity.class);
+			Current.setProfile(db.getProfile(userName));
+			Intent intent = new Intent(this, AccountsActivity.class);
 			startActivity(intent);
+			finish();
 		}
 		else if (!checkAdd(userName)){
 			Toast.makeText(getApplicationContext(), "Username taken. Please choose again.", Toast.LENGTH_SHORT).show();
