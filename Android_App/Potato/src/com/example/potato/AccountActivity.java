@@ -43,14 +43,13 @@ public class AccountActivity extends Activity {
 			TextView source=new TextView(this);
 			TextView dest=new TextView(this);
 			TextView amnt=new TextView(this);
-			source.setText(t.getSource());
-			dest.setText(t.getDestination());
 			amnt.setText(""+t.getAmmount());
 			newRow.addView(source);
 			newRow.addView(dest);
 			newRow.addView(amnt);
 			tbl.addView(newRow);
 		}
+	
 		TableRow footer = new TableRow(this);
 		TextView fsource=new TextView(this);
 		TextView fdest=new TextView(this);

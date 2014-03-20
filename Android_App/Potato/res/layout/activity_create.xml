@@ -19,7 +19,7 @@
         android:onClick="onClickCancel"/>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/dateEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -32,17 +32,17 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/dateEntry"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="61dp"
         android:onClick="onClickCreateNewAccount"
         android:text="@string/String_CreateNewAccount" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/categoryEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/dateEntry"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:ems="10"

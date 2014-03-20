@@ -21,7 +21,7 @@
         android:textColor="#ffffff" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/dateEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
@@ -34,11 +34,11 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/categoryEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignLeft="@+id/dateEntry"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="textPassword"
@@ -69,11 +69,11 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/amountEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignLeft="@+id/categoryEntry"
+        android:layout_alignRight="@+id/categoryEntry"
         android:layout_alignTop="@+id/textView4"
         android:ems="10"
         android:inputType="textPassword"
@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="42dp"
-        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toLeftOf="@+id/categoryEntry"
         android:text="@string/String_NewPassword"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff" />
@@ -94,9 +94,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/categoryEntry"
         android:layout_marginTop="24dp"
-        android:layout_toLeftOf="@+id/editText3"
+        android:layout_toLeftOf="@+id/amountEntry"
         android:text="@string/String_ConfirmPassword"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff" />

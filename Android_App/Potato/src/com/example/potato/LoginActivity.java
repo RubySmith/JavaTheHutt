@@ -23,8 +23,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		username =(EditText)findViewById(R.id.editText1);
-		password = (EditText)findViewById(R.id.editText2);
+		username =(EditText)findViewById(R.id.dateEntry);
+		password = (EditText)findViewById(R.id.categoryEntry);
 	}
 
 	@Override

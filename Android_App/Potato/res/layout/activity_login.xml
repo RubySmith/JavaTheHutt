@@ -32,14 +32,14 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText2"
+        android:layout_above="@+id/categoryEntry"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="48dp"
         android:text="@string/String_Username"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/categoryEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView2"
@@ -54,11 +54,11 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/dateEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/editText2"
+        android:layout_alignLeft="@+id/categoryEntry"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textColor="#ffffff"

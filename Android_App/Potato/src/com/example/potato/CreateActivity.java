@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.util.Date;
 
 public class CreateActivity extends Activity {
 	
@@ -18,8 +19,8 @@ public class CreateActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create);
-		accountname = (EditText)findViewById(R.id.editText1);
-		balance= (EditText)findViewById(R.id.editText2);
+		accountname = (EditText)findViewById(R.id.dateEntry);
+		balance= (EditText)findViewById(R.id.categoryEntry);
 	}
 
 	@Override
@@ -53,7 +54,7 @@ public class CreateActivity extends Activity {
 			return;
 		} else {
 			Account newAccount = new Account(accountName);
-			newAccount.addTransaction("Starting Balance", accountName, bal);
+			newAccount.addTransaction("Starting Balance", bal,new Date());
 			Current.getProfile().addAccount(newAccount);
 			Current.setAccount(newAccount);
 			

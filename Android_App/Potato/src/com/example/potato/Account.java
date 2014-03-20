@@ -1,6 +1,7 @@
 package com.example.potato;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,10 +36,10 @@ public class Account {
 		return transactions;
 	}
 	
-	public void addTransaction(String source, String destination, double ammount){
-		Transaction t=new Transaction(source, destination, ammount);
+	public void addTransaction(String category,double amount,Date date){
+		Transaction t=new Transaction(category,amount,date);
 		transactions.add(t);
-		total=total+ammount;
+		total+=amount;
 	}
 	public String toString(){
 		return name;

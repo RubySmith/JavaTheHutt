@@ -3,7 +3,6 @@ package com.example.potato;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -26,9 +25,9 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		username = (EditText)findViewById(R.id.editText1);
-		password = (EditText)findViewById(R.id.editText2);
-		confirmedPW = (EditText)findViewById(R.id.editText3);
+		username = (EditText)findViewById(R.id.dateEntry);
+		password = (EditText)findViewById(R.id.categoryEntry);
+		confirmedPW = (EditText)findViewById(R.id.amountEntry);
 		
 	}
 	@Override
