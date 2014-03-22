@@ -21,7 +21,7 @@
         android:textColor="#ffffff" />
 
     <EditText
-        android:id="@+id/dateEntry"
+        android:id="@+id/dayEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView3"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/dateEntry"
+        android:layout_alignLeft="@+id/dayEntry"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="textPassword"

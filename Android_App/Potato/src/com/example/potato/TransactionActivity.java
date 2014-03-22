@@ -13,21 +13,33 @@ import android.widget.Toast;
 public class TransactionActivity extends Activity {
 
 	private EditText categoryEntry;
-	private EditText dateEntry;
+	private EditText dayEntry;
+	private EditText monthEntry;
+	private EditText yearEntry;
 	private EditText amountEntry;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transaction);
-		dateEntry = (EditText)findViewById(R.id.dateEntry);
+		dayEntry = (EditText)findViewById(R.id.dayEntry);
+		monthEntry = (EditText)findViewById(R.id.monthEntry);
+		yearEntry = (EditText)findViewById(R.id.yearEntry);
 		categoryEntry = (EditText)findViewById(R.id.categoryEntry);
 		amountEntry = (EditText)findViewById(R.id.amountEntry);
+		
 	}
 	
 	public void onClickConfirm(View V){
 		String category=categoryEntry.getText().toString();
-		Date date = (Date) dateEntry.getText();
+		
+		int day = Integer.parseInt(dayEntry.getText().toString());
+		int month = Integer.parseInt(monthEntry.getText().toString());
+		int year = Integer.parseInt(yearEntry.getText().toString());
+		//We need to make sure the inputs are valid
+		
+		@SuppressWarnings("deprecation")
+		Date date = new Date(year,month,day);
 		double amount = Double.parseDouble(amountEntry.getText().toString());
 		try{
 			amount=Double.parseDouble(amountEntry.getText().toString());

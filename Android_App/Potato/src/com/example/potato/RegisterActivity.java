@@ -25,7 +25,7 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		username = (EditText)findViewById(R.id.dateEntry);
+		username = (EditText)findViewById(R.id.dayEntry);
 		password = (EditText)findViewById(R.id.categoryEntry);
 		confirmedPW = (EditText)findViewById(R.id.amountEntry);
 		

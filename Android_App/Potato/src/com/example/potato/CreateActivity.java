@@ -19,7 +19,7 @@ public class CreateActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create);
-		accountname = (EditText)findViewById(R.id.dateEntry);
+		accountname = (EditText)findViewById(R.id.dayEntry);
 		balance= (EditText)findViewById(R.id.categoryEntry);
 	}
 
