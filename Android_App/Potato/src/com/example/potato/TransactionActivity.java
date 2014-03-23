@@ -5,26 +5,24 @@ import java.util.Date;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class TransactionActivity extends Activity {
 
 	private EditText categoryEntry;
-	private EditText dayEntry;
-	private EditText monthEntry;
-	private EditText yearEntry;
+	private DatePicker dateEntry;
 	private EditText amountEntry;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_transaction);
-		dayEntry = (EditText)findViewById(R.id.dayEntry);
-		monthEntry = (EditText)findViewById(R.id.monthEntry);
-		yearEntry = (EditText)findViewById(R.id.yearEntry);
+		dateEntry = (DatePicker)findViewById(R.id.dateEntry);
 		categoryEntry = (EditText)findViewById(R.id.categoryEntry);
 		amountEntry = (EditText)findViewById(R.id.amountEntry);
 		
@@ -33,9 +31,10 @@ public class TransactionActivity extends Activity {
 	public void onClickConfirm(View V){
 		String category=categoryEntry.getText().toString();
 		
-		int day = Integer.parseInt(dayEntry.getText().toString());
-		int month = Integer.parseInt(monthEntry.getText().toString());
-		int year = Integer.parseInt(yearEntry.getText().toString());
+		int day = dateEntry.getDayOfMonth();
+		int month = dateEntry.getMonth();
+		int year = dateEntry.getYear();
+		Log.d("Debug", "In Transaction Activity: "+year);
 		//We need to make sure the inputs are valid
 		
 		@SuppressWarnings("deprecation")

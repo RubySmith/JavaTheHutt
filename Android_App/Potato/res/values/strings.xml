@@ -32,5 +32,6 @@
     <string name="title_activity_account">AccountActivity</string>
     <string name="title_activity_accounts">AccountsActivity</string>
     <string name="title_activity_transaction">TransactionActivity</string>
+    <string name="title_activity_gen_report">GenReportActivity</string>
 
 </resources>

@@ -25,8 +25,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="95dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Enter Account Name" />
+        android:hint="Enter Account Name"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/button1"
@@ -46,8 +46,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
         android:ems="10"
-        android:inputType="numberDecimal"
-        android:text="Enter Current Balance" >
+        android:hint="Enter Current Balance"
+        android:inputType="numberDecimal" >
 
         <requestFocus />
     </EditText>

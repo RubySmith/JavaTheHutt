@@ -41,6 +41,10 @@ public class AccountsActivity extends ListActivity {
 			Intent intent = new Intent(this, CreateActivity.class);
 			startActivity(intent);
 		}
+		else if (txt.getText().toString().equals("Generate Report")){
+			Intent intent= new Intent(this, GenReportActivity.class);
+			startActivity(intent);
+		}
 		else{
 			//Log.d("debug", ""+txt.getText());
 			Current.setAccount(map.get(""+txt.getText()));
@@ -81,6 +85,7 @@ public class AccountsActivity extends ListActivity {
 		else{
 			accountNames.clear();
 			accountNames.addAll( map.keySet());
+			accountNames.add("Generate Report");
 			accountNames.add("Create New Account");
 		}
 		ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, accountNames);

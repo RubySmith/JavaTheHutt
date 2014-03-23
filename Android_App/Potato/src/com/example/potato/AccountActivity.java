@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TableLayout;
@@ -27,40 +28,45 @@ public class AccountActivity extends Activity {
 		super.onResume();
 		TableLayout tbl = (TableLayout)findViewById(R.id.TBL);
 		TableRow header = new TableRow(this);
-		TextView hsource=new TextView(this);
-		TextView hdest=new TextView(this);
+		TextView hdate=new TextView(this);
+		TextView hcat=new TextView(this);
 		TextView hamnt=new TextView(this); 
-		hsource.setText("Source");
-		hdest.setText("Destination");
+		hdate.setText("Date");
+		hcat.setText("Category");
 		hamnt.setText("Amount");
-		header.addView(hsource);
-		header.addView(hdest);
+		header.addView(hdate);
+		header.addView(hcat);
 		header.addView(hamnt);
 		tbl.addView(header);
-		trans=(ArrayList<Transaction>)acnt.getTransactions();
-		for (Transaction t: trans){
-			TableRow newRow = new TableRow(this);
-			TextView source=new TextView(this);
-			TextView dest=new TextView(this);
-			TextView amnt=new TextView(this);
-			amnt.setText(""+t.getAmmount());
-			newRow.addView(source);
-			newRow.addView(dest);
-			newRow.addView(amnt);
-			tbl.addView(newRow);
+		if (acnt!=null&& acnt.getTransactions()!=null){
+			trans=(ArrayList<Transaction>)acnt.getTransactions();
+			for (Transaction t: trans){
+				TableRow newRow = new TableRow(this);
+				TextView date=new TextView(this);
+				TextView cat=new TextView(this);
+				TextView amnt=new TextView(this);
+				amnt.setText(""+t.getAmmount());
+				cat.setText(t.getCategory());
+				date.setText(t.getDateString());
+				Log.d("Debug", "In AccountActivity: "+t.getDateString());
+				newRow.addView(date);
+				newRow.addView(cat);
+				newRow.addView(amnt);
+				tbl.addView(newRow);
+			}
+		
+			TableRow footer = new TableRow(this);
+			TextView fdate=new TextView(this);
+			TextView fcat=new TextView(this);
+			TextView famnt=new TextView(this); 
+			fdate.setText("Current");
+			fcat.setText("Balance");
+			famnt.setText(""+acnt.getTotal());
+			footer.addView(fdate);
+			footer.addView(fcat);
+			footer.addView(famnt);
+			tbl.addView(footer);
 		}
-	
-		TableRow footer = new TableRow(this);
-		TextView fsource=new TextView(this);
-		TextView fdest=new TextView(this);
-		TextView famnt=new TextView(this); 
-		fsource.setText("Current");
-		fdest.setText("Balance");
-		famnt.setText(""+acnt.getTotal());
-		footer.addView(fsource);
-		footer.addView(fdest);
-		footer.addView(famnt);
-		tbl.addView(footer);
 	}
 	
 	public void onClickAddTransaction(View v){

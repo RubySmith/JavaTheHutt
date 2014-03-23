@@ -8,17 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TransactionActivity" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignRight="@+id/amountEntry"
-        android:layout_marginRight="32dp"
-        android:onClick="onClickConfirm"
-        android:text="Confirm" />
-
     <EditText
         android:id="@+id/amountEntry"
         android:layout_width="wrap_content"
@@ -27,8 +16,8 @@
         android:layout_alignLeft="@+id/categoryEntry"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:inputType="numberSigned|numberDecimal"
-        android:text="Amount" />
+        android:hint="Amount"
+        android:inputType="numberSigned|numberDecimal" />
 
     <EditText
         android:id="@+id/categoryEntry"
@@ -36,51 +25,36 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/amountEntry"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
         android:ems="10"
-        android:text="Category" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/yearEntry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/categoryEntry"
-        android:layout_alignLeft="@+id/categoryEntry"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:text="year" />
+        android:hint="Category" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amountEntry"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="41dp"
-        android:layout_toLeftOf="@+id/button1"
+        android:layout_marginBottom="14dp"
         android:onClick="onClickCancel"
         android:text="Cancel" />
 
-    <EditText
-        android:id="@+id/dayEntry"
+    <Button
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/yearEntry"
-        android:layout_alignLeft="@+id/yearEntry"
-        android:layout_marginBottom="23dp"
-        android:ems="10"
-        android:text="day" />
+        android:layout_below="@+id/amountEntry"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/button2"
+        android:onClick="onClickConfirm"
+        android:text="Confirm" />
 
-    <EditText
-        android:id="@+id/monthEntry"
+    <DatePicker
+        android:id="@+id/dateEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/dayEntry"
-        android:layout_alignLeft="@+id/dayEntry"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:text="month" />
+        android:layout_above="@+id/categoryEntry"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:calendarViewShown="false" />
 
 </RelativeLayout>

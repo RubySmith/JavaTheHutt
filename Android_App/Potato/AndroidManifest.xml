@@ -58,6 +58,10 @@
             android:name="com.example.potato.TransactionActivity"
             android:label="@string/title_activity_transaction" >
         </activity>
+        <activity
+            android:name="com.example.potato.GenReportActivity"
+            android:label="@string/title_activity_gen_report" >
+        </activity>
     </application>
 
 </manifest>
