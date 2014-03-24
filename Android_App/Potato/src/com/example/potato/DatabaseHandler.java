@@ -149,6 +149,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return profile;
 	}
 	
+	
 	// Getting all profiles
 	public List<Profile> getAllProfiles() {
 		List<Profile> profileList = new ArrayList<Profile>();
