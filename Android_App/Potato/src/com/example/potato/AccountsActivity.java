@@ -20,7 +20,7 @@ public class AccountsActivity extends ListActivity {
 	ListView lv;
 	ArrayList<Account> accounts;
 	HashMap<String, Account> map;
-	
+	protected String reportType;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,8 +41,29 @@ public class AccountsActivity extends ListActivity {
 			Intent intent = new Intent(this, CreateActivity.class);
 			startActivity(intent);
 		}
-		else if (txt.getText().toString().equals("Generate Report")){
+		else if (txt.getText().toString().equals("Generate Spending Report")){
 			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
+			reportType = "Spending";
+			startActivity(intent);
+		}
+		else if (txt.getText().toString().equals("Generate Source Report")){
+			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
+			reportType = "Source";
+			startActivity(intent);
+		}
+		else if (txt.getText().toString().equals("Generate Cash FLow Report")){
+			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
+			reportType = "CashFlow";
+			startActivity(intent);
+		}
+		else if (txt.getText().toString().equals("Generate Account Report")){
+			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
+			reportType = "Account";
+			startActivity(intent);
+		}
+		else if (txt.getText().toString().equals("Generate Transaction History Report")){
+			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
+			reportType = "TransactionHistory";
 			startActivity(intent);
 		}
 		else{
@@ -85,8 +106,12 @@ public class AccountsActivity extends ListActivity {
 		else{
 			accountNames.clear();
 			accountNames.addAll( map.keySet());
-			accountNames.add("Generate Report");
 			accountNames.add("Create New Account");
+			accountNames.add("Generate Spending Report");
+			accountNames.add("Generate Category Report");
+			accountNames.add("Generate Source Report");
+			accountNames.add("Generate Cash FLow Report");
+			accountNames.add("Generate Transaction History Report");
 		}
 		ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, accountNames);
 		lv.setAdapter(adapter);

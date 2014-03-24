@@ -1,5 +1,6 @@
 package com.example.potato;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -208,5 +209,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] { String.valueOf(profile.getUsername()) });
 		db.close();
 	}
-
 }
