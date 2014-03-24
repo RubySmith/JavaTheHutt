@@ -33,5 +33,6 @@
     <string name="title_activity_accounts">AccountsActivity</string>
     <string name="title_activity_transaction">TransactionActivity</string>
     <string name="title_activity_gen_report">GenReportActivity</string>
+    <string name="title_activity_date_range_selection">MainActivity</string>
 
 </resources>

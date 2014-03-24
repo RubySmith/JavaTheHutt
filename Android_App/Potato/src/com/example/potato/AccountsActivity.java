@@ -42,7 +42,7 @@ public class AccountsActivity extends ListActivity {
 			startActivity(intent);
 		}
 		else if (txt.getText().toString().equals("Generate Report")){
-			Intent intent= new Intent(this, GenReportActivity.class);
+			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
 			startActivity(intent);
 		}
 		else{
