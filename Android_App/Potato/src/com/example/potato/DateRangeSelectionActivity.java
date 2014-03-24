@@ -17,7 +17,7 @@ public class DateRangeSelectionActivity extends Activity {
 	DatabaseHandler db=new DatabaseHandler(this);
 	private DatePicker startDateEntry;
 	private DatePicker endDateEntry;
-
+	protected String reportType;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class DateRangeSelectionActivity extends Activity {
 		year = endDateEntry.getYear();
 		Date endDate = new Date(year,month,day);
 		//db.generateReport(startDate,endDate);
+		finish();
 	}
 	public void onClickCancel(View v){
 		Intent intent = new Intent(this, AccountsActivity.class);
