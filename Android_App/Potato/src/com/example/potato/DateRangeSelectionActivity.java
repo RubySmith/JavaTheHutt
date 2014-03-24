@@ -46,6 +46,8 @@ public class DateRangeSelectionActivity extends Activity {
 		year = endDateEntry.getYear();
 		endDate = new Date(year,month,day);
 		//db.generateReport(startDate,endDate);
+		Intent intent= new Intent(this, GenReportActivity.class);
+		startActivity(intent);
 		finish();
 	}
 	public void onClickCancel(View v){
