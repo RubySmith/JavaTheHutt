@@ -129,7 +129,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			values.put(KEY_ACCOUNT, Current.getAccount().getName());
 
 			// Inserting Row
-			db.insert(TABLE_ACCOUNTS, null, values);
+			db.insert(TABLE_TRANSACTIONS, null, values);
 			db.close(); // Closing database connection
 		}
 	
