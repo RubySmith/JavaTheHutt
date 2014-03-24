@@ -37,41 +37,36 @@ public class AccountsActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id){
 		TextView txt=(TextView) v;
+		Intent intent;
 		if (txt.getText().toString().equals("Create New Account")){
-			Intent intent = new Intent(this, CreateActivity.class);
-			startActivity(intent);
+			intent = new Intent(this, CreateActivity.class);
 		}
 		else if (txt.getText().toString().equals("Generate Spending Report")){
-			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
 			reportType = "Spending";
-			startActivity(intent);
+			intent= new Intent(this, DateRangeSelectionActivity.class);
 		}
 		else if (txt.getText().toString().equals("Generate Source Report")){
-			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
 			reportType = "Source";
-			startActivity(intent);
+			intent= new Intent(this, DateRangeSelectionActivity.class);
 		}
 		else if (txt.getText().toString().equals("Generate Cash FLow Report")){
-			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
 			reportType = "CashFlow";
-			startActivity(intent);
+			intent= new Intent(this, DateRangeSelectionActivity.class);
 		}
 		else if (txt.getText().toString().equals("Generate Account Report")){
-			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
 			reportType = "Account";
-			startActivity(intent);
+			intent= new Intent(this, DateRangeSelectionActivity.class);
 		}
 		else if (txt.getText().toString().equals("Generate Transaction History Report")){
-			Intent intent= new Intent(this, DateRangeSelectionActivity.class);
 			reportType = "TransactionHistory";
-			startActivity(intent);
+			intent= new Intent(this, DateRangeSelectionActivity.class);
 		}
 		else{
 			//Log.d("debug", ""+txt.getText());
 			Current.setAccount(map.get(""+txt.getText()));
-			Intent intent = new Intent(this, AccountActivity.class);
-			startActivity(intent);
+			intent = new Intent(this, AccountActivity.class);
 		}
+		startActivity(intent);
 	}
 	
 	public void onClickCreateAccount(View v){
@@ -108,10 +103,10 @@ public class AccountsActivity extends ListActivity {
 			accountNames.addAll( map.keySet());
 			accountNames.add("Create New Account");
 			accountNames.add("Generate Spending Report");
-			accountNames.add("Generate Category Report");
-			accountNames.add("Generate Source Report");
-			accountNames.add("Generate Cash FLow Report");
-			accountNames.add("Generate Transaction History Report");
+//			accountNames.add("Generate Category Report");
+//			accountNames.add("Generate Source Report");
+//			accountNames.add("Generate Cash FLow Report");
+//			accountNames.add("Generate Transaction History Report");
 		}
 		ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, accountNames);
 		lv.setAdapter(adapter);
