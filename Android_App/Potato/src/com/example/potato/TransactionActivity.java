@@ -48,6 +48,7 @@ public class TransactionActivity extends Activity {
 		}
 		
 		Current.getAccount().addTransaction(category,amount,date);
+		
 		Intent intent = new Intent(this, AccountActivity.class);
 		startActivity(intent);
 		finish();
