@@ -33,7 +33,7 @@ public class TransactionActivity extends Activity {
 		
 		int day = dateEntry.getDayOfMonth();
 		int month = dateEntry.getMonth();
-		int year = dateEntry.getYear();
+		int year = dateEntry.getYear()-1900;
 		Log.d("Debug", "In Transaction Activity: "+year);
 		//We need to make sure the inputs are valid
 		

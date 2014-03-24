@@ -44,8 +44,8 @@ public final class R {
         public static final int tableRow2=0x7f080002;
         public static final int tableRow3=0x7f080003;
         public static final int tableRow4=0x7f080004;
-        public static final int textView1=0x7f08000c;
-        public static final int textView2=0x7f08000a;
+        public static final int textView1=0x7f08000a;
+        public static final int textView2=0x7f08000c;
         public static final int textView3=0x7f08000f;
         public static final int textView4=0x7f080011;
     }

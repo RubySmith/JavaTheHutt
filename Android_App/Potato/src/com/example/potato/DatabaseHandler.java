@@ -23,14 +23,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
  
     // Database Name
-    private static final String DATABASE_NAME = "profileManager";
+    private static final String DATABASE_NAME = "databaseManager";
  
     // Profiles table name
     private static final String TABLE_PROFILES = "profiles";
     
+    // Accounts table name
+    private static final String TABLE_ACCOUNTS = "accounts";
+    
+    //Transactions table name
+    private static final String TABLE_TRANSACTIONS = "transactions";
+    
     // Profiles Table Columns names
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
+    
+    // Accounts Table Columns names
+    private static final String KEY_NAME = "accountName";
+    private static final String KEY_TOTAL= "total";
+    private static final String KEY_PROFILE= "profile";
+    
+    //Transactions Table Columns name
+    private static final String KEY_CATEGORY = "category";
+    private static final String KEY_AMOUNT= "amount";
+    private static final String KEY_DATE= "date";
+    private static final String KEY_ACCOUNT= "account";
     
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,6 +60,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_USERNAME + " TEXT,"
                 + KEY_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_PROFILES_TABLE);
+        
+        String CREATE_ACCOUNTS_TABLE= "CREATE TABLE" + TABLE_ACCOUNTS + "("
+        		+ KEY_NAME+ " TEXT,"
+        		+ KEY_TOTAL+ " TEXT,"
+        		+ KEY_PROFILE+ " TEXT" + ")";
+        db.execSQL(CREATE_ACCOUNTS_TABLE);
+        
+        String CREATE_TRANSACTIONS_TABLE= "CREATE TABLE" + TABLE_TRANSACTIONS + "("
+        		+ KEY_CATEGORY+ " TEXT,"
+        		+ KEY_AMOUNT+ " TEXT,"
+        		+ KEY_DATE+ " TEXT,"
+        		+ KEY_ACCOUNT+ " TEXT"+ ")";
+        db.execSQL(CREATE_TRANSACTIONS_TABLE);
 	}
 
 	// Upgrading database
@@ -50,12 +80,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFILES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTIONS);
  
         // Create tables again
         onCreate(db);
     }
     
-    // Adding new contact
+    // Adding new profile
 	public void addProfile(Profile profile) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
@@ -68,6 +100,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.close(); // Closing database connection
 	}
 	
+	// Adding new account
+	public void addAccount(Account acnt) {
+		SQLiteDatabase db = this.getWritableDatabase();
+
+		ContentValues values = new ContentValues();
+		values.put(KEY_NAME, acnt.getName()); // Profile Username
+		values.put(KEY_TOTAL, acnt.getTotal()); // Profile Password
+		values.put(KEY_PROFILE, Current.getProfile().getUsername());
+
+		// Inserting Row
+		db.insert(TABLE_ACCOUNTS, null, values);
+		db.close(); // Closing database connection
+	}
+		
+	// Adding new account
+		public void addTransaction(Transaction trans) {
+			SQLiteDatabase db = this.getWritableDatabase();
+
+			ContentValues values = new ContentValues();
+			values.put(KEY_CATEGORY, trans.getCategory()); // Profile Username
+			values.put(KEY_AMOUNT, trans.getAmmount()); // Profile Password
+			values.put(KEY_DATE, trans.getDateString());
+			values.put(KEY_ACCOUNT, Current.getAccount().getName());
+
+			// Inserting Row
+			db.insert(TABLE_ACCOUNTS, null, values);
+			db.close(); // Closing database connection
+		}
 	
 	// Getting single profile
 	public Profile getProfile(String username) {
