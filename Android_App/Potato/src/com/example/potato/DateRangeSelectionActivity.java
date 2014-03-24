@@ -17,7 +17,9 @@ public class DateRangeSelectionActivity extends Activity {
 	DatabaseHandler db=new DatabaseHandler(this);
 	private DatePicker startDateEntry;
 	private DatePicker endDateEntry;
-	protected static String reportType;
+	protected static Date startDate;
+	protected static Date endDate;
+	static String reportType;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +39,12 @@ public class DateRangeSelectionActivity extends Activity {
 		int day = startDateEntry.getDayOfMonth();
 		int month = startDateEntry.getMonth();
 		int year = startDateEntry.getYear();
-		@SuppressWarnings("deprecation")
-		Date startDate = new Date(year,month,day);
+		startDate = new Date(year,month,day);
 		
 		day = endDateEntry.getDayOfMonth();
 		month = endDateEntry.getMonth();
 		year = endDateEntry.getYear();
-		Date endDate = new Date(year,month,day);
+		endDate = new Date(year,month,day);
 		//db.generateReport(startDate,endDate);
 		finish();
 	}

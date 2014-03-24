@@ -1,10 +1,14 @@
 package com.example.potato;
 
+import java.text.DateFormat;
 import java.util.Collection;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 public class GenReportActivity extends Activity {
 
@@ -39,26 +43,62 @@ public class GenReportActivity extends Activity {
 	}
 	
 	private void generateSpendingReport(){
-		
+		TableLayout tbl = (TableLayout)findViewById(R.id.TBL);
+		TableRow header = new TableRow(this);
+		TextView head=new TextView(this);
+		head.setText("Spending Category Report for "+Current.getProfile().getUsername());
+		header.addView(head);
+		TableRow dateRow= new TableRow(this);
+		TextView dates=new TextView(this);
+		DateFormat df= DateFormat.getDateInstance();
+		String start=df.format(DateRangeSelectionActivity.startDate);
+		String end=df.format(DateRangeSelectionActivity.endDate);
+		dates.setText(start+"-"+end);
+		tbl.addView(header);
+		tbl.addView(dateRow);
 	}
 
 	private void generateTransHistReport() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	private void generateAccountReport() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	private void generateCashFlowReport() {
-		// TODO Auto-generated method stub
+		TableLayout tbl = (TableLayout)findViewById(R.id.TBL);
+		TableRow header = new TableRow(this);
+		TextView head=new TextView(this);
+		head.setText("Cash Flow Report");
+		header.addView(head);
+		TableRow dateRow= new TableRow(this);
+		TextView dates=new TextView(this);
+		DateFormat df= DateFormat.getDateInstance();
+		String start=df.format(DateRangeSelectionActivity.startDate);
+		String end=df.format(DateRangeSelectionActivity.endDate);
+		dates.setText(start+"-"+end);
+		tbl.addView(header);
+		tbl.addView(dateRow);
 		
 	}
 
 	private void generateSourceReport() {
-		// TODO Auto-generated method stub
+		TableLayout tbl = (TableLayout)findViewById(R.id.TBL);
+		TableRow header1 = new TableRow(this);
+		TextView head1=new TextView(this);
+		head1.setText("Income Source Report for "+Current.getProfile().getUsername());
+		header1.addView(head1);
+		TableRow dateRow= new TableRow(this);
+		TextView dates=new TextView(this);
+		DateFormat df= DateFormat.getDateInstance();
+		String start=df.format(DateRangeSelectionActivity.startDate);
+		String end=df.format(DateRangeSelectionActivity.endDate);
+		dates.setText(start+"-"+end);
+		tbl.addView(header1);
+		tbl.addView(dateRow);
 		
 	}
 

@@ -8,34 +8,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TransactionActivity" >
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="50dp"
-        android:onClick="onClickCancel"
-        android:text="Cancel" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="53dp"
-        android:onClick="onClickConfirm"
-        android:text="Confirm" />
-
-    <DatePicker
-        android:id="@+id/dateEntryEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:calendarViewShown="false" />
+        <DatePicker
+            android:id="@+id/dateEntryStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:calendarViewShown="false" />
 
         <TextView
             android:id="@+id/textView1"
@@ -43,27 +22,47 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="14dp"
             android:text="Start Date"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <DatePicker
-            android:id="@+id/dateEntryStart"
+        <Button
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/textView1"
-            android:layout_marginTop="20dp"
+            android:layout_alignBaseline="@+id/button2"
+            android:layout_alignBottom="@+id/button2"
+            android:layout_alignRight="@+id/dateEntryEnd"
+            android:onClick="onClickConfirm"
+            android:text="Confirm" />
+
+        <DatePicker
+            android:id="@+id/dateEntryEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dateEntryStart"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="18dp"
             android:calendarViewShown="false" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/dateEntryEnd"
-            android:layout_alignLeft="@+id/textView1"
-            android:layout_marginBottom="26dp"
+            android:layout_alignRight="@+id/textView1"
+            android:layout_below="@+id/dateEntryStart"
+            android:layout_marginTop="18dp"
             android:text="End Date"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateEntryEnd"
+            android:layout_marginTop="14dp"
+            android:layout_toLeftOf="@+id/textView2"
+            android:onClick="onClickCancel"
+            android:text="Cancel" />
 
 </RelativeLayout>

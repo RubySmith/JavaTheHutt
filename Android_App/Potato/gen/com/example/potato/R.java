@@ -35,8 +35,8 @@ public final class R {
         public static final int button2=0x7f080006;
         public static final int categoryEntry=0x7f080008;
         public static final int dateEntry=0x7f080010;
-        public static final int dateEntryEnd=0x7f080009;
-        public static final int dateEntryStart=0x7f08000b;
+        public static final int dateEntryEnd=0x7f08000b;
+        public static final int dateEntryStart=0x7f080009;
         public static final int dayEntry=0x7f080007;
         public static final int tableRow1=0x7f080001;
         public static final int tableRow2=0x7f080002;
