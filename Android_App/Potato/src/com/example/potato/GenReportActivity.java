@@ -1,10 +1,14 @@
 package com.example.potato;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -15,6 +19,7 @@ public class GenReportActivity extends Activity {
 	private String rt= DateRangeSelectionActivity.reportType;
 	private DatabaseHandler db=new DatabaseHandler(this);
 	//private Collection transData=db.generateReport();
+	ArrayList<Transaction> trans;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,7 @@ public class GenReportActivity extends Activity {
 	@Override
 	protected void onResume(){
 		super.onResume();
+		trans= retrieveReportData(); 
 		if (rt.equals("Spending")){
 			generateSpendingReport();
 		}
@@ -42,6 +48,14 @@ public class GenReportActivity extends Activity {
 		}
 	}
 	
+	private ArrayList<Transaction> retrieveReportData() {
+		ArrayList<Transaction> toReturn=new ArrayList<Transaction>();
+		for (Account a: Current.getProfile().getAccounts()){
+			toReturn.addAll(a.getTransactions());
+		}
+		return toReturn;
+	}
+
 	private void generateSpendingReport(){
 		TableLayout tbl = (TableLayout)findViewById(R.id.TBL);
 		TableRow header = new TableRow(this);
@@ -56,6 +70,28 @@ public class GenReportActivity extends Activity {
 		dates.setText(start+"-"+end);
 		tbl.addView(header);
 		tbl.addView(dateRow);
+		HashMap <String, Double> categories=new HashMap<String, Double>();
+		String category;
+		for (Transaction t: trans){
+			category=t.getCategory();
+			if (categories.containsKey(category)){
+				categories.put(category, categories.get(category)+t.getAmmount());
+			}
+			else{
+				categories.put(category, t.getAmmount());
+			}
+		}
+		Set<String> keys=categories.keySet();
+		for (String s: keys){
+			TableRow newRow = new TableRow(this);
+			TextView cat=new TextView(this);
+			TextView amnt=new TextView(this);
+			cat.setText(s);
+			amnt.setText(""+categories.get(s));
+			newRow.addView(cat);
+			newRow.addView(amnt);
+			tbl.addView(newRow);
+		}
 	}
 
 	private void generateTransHistReport() {
