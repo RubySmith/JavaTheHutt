@@ -40,6 +40,11 @@ public class Transaction {
 		Log.d("Debug", "In Transaction: "+dateString);
 		return dateString;
 	}
+	
+	public long getUnixDate(){
+		return date.getTime();
+	}
+	
 	public boolean isDeposit(){
 		return (ammount > 0);
 	}

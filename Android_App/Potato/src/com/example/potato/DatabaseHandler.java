@@ -56,17 +56,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Creating Tables
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		
+		//Profiles table with Username and Password columns
 		String CREATE_PROFILES_TABLE = "CREATE TABLE " + TABLE_PROFILES + "("
                 + KEY_USERNAME + " TEXT,"
                 + KEY_PASSWORD + " TEXT" + ")";
         db.execSQL(CREATE_PROFILES_TABLE);
         
+        //Accounts table with name, total, and profile columns
         String CREATE_ACCOUNTS_TABLE= "CREATE TABLE" + TABLE_ACCOUNTS + "("
         		+ KEY_NAME+ " TEXT,"
         		+ KEY_TOTAL+ " TEXT,"
         		+ KEY_PROFILE+ " TEXT" + ")";
         db.execSQL(CREATE_ACCOUNTS_TABLE);
         
+        //Transactions table with category, amount, date, and account tables
         String CREATE_TRANSACTIONS_TABLE= "CREATE TABLE" + TABLE_TRANSACTIONS + "("
         		+ KEY_CATEGORY+ " TEXT,"
         		+ KEY_AMOUNT+ " TEXT,"
@@ -105,8 +109,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_NAME, acnt.getName()); // Profile Username
-		values.put(KEY_TOTAL, acnt.getTotal()); // Profile Password
+		values.put(KEY_NAME, acnt.getName()); 
+		values.put(KEY_TOTAL, acnt.getTotal()); 
 		values.put(KEY_PROFILE, Current.getProfile().getUsername());
 
 		// Inserting Row
@@ -119,9 +123,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			SQLiteDatabase db = this.getWritableDatabase();
 
 			ContentValues values = new ContentValues();
-			values.put(KEY_CATEGORY, trans.getCategory()); // Profile Username
-			values.put(KEY_AMOUNT, trans.getAmmount()); // Profile Password
-			values.put(KEY_DATE, trans.getDateString());
+			values.put(KEY_CATEGORY, trans.getCategory());
+			values.put(KEY_AMOUNT, trans.getAmmount());
+			values.put(KEY_DATE, trans.getUnixDate()); 
 			values.put(KEY_ACCOUNT, Current.getAccount().getName());
 
 			// Inserting Row
