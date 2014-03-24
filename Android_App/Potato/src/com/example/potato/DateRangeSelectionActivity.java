@@ -17,7 +17,6 @@ public class DateRangeSelectionActivity extends Activity {
 	DatabaseHandler db=new DatabaseHandler(this);
 	private DatePicker startDateEntry;
 	private DatePicker endDateEntry;
-
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
