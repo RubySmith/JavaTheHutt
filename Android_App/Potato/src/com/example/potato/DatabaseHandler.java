@@ -65,14 +65,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_PROFILES_TABLE);
         
         //Accounts table with name, total, and profile columns
-        String CREATE_ACCOUNTS_TABLE= "CREATE TABLE" + TABLE_ACCOUNTS + "("
+        String CREATE_ACCOUNTS_TABLE= "CREATE TABLE " + TABLE_ACCOUNTS + "("
         		+ KEY_NAME+ " TEXT,"
         		+ KEY_TOTAL+ " TEXT,"
         		+ KEY_PROFILE+ " TEXT" + ")";
         db.execSQL(CREATE_ACCOUNTS_TABLE);
         
         //Transactions table with category, amount, date, and account tables
-        String CREATE_TRANSACTIONS_TABLE= "CREATE TABLE" + TABLE_TRANSACTIONS + "("
+        String CREATE_TRANSACTIONS_TABLE= "CREATE TABLE " + TABLE_TRANSACTIONS + "("
         		+ KEY_CATEGORY+ " TEXT,"
         		+ KEY_AMOUNT+ " TEXT,"
         		+ KEY_DATE+ " TEXT,"
