@@ -52,14 +52,13 @@ public final class R {
         public static final int activity_accounts=0x7f030001;
         public static final int activity_create=0x7f030002;
         public static final int activity_date_range_selection=0x7f030003;
-        public static final int activity_date_selection=0x7f030004;
-        public static final int activity_gen_report=0x7f030005;
-        public static final int activity_login=0x7f030006;
-        public static final int activity_main=0x7f030007;
-        public static final int activity_profile=0x7f030008;
-        public static final int activity_register=0x7f030009;
-        public static final int activity_success=0x7f03000a;
-        public static final int activity_transaction=0x7f03000b;
+        public static final int activity_gen_report=0x7f030004;
+        public static final int activity_login=0x7f030005;
+        public static final int activity_main=0x7f030006;
+        public static final int activity_profile=0x7f030007;
+        public static final int activity_register=0x7f030008;
+        public static final int activity_success=0x7f030009;
+        public static final int activity_transaction=0x7f03000a;
     }
     public static final class menu {
         public static final int account=0x7f070000;

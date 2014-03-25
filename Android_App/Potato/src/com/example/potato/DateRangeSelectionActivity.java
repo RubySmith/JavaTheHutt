@@ -18,7 +18,9 @@ public class DateRangeSelectionActivity extends Activity {
 	private DatePicker startDateEntry;
 	private DatePicker endDateEntry;
 	protected static Date startDate;
+	protected static Date dayB4;
 	protected static Date endDate;
+	protected static Date dayAfter;
 	static String reportType;
 	
 	@Override
@@ -38,13 +40,15 @@ public class DateRangeSelectionActivity extends Activity {
 	public void onConfirm(View V){
 		int day = startDateEntry.getDayOfMonth();
 		int month = startDateEntry.getMonth();
-		int year = startDateEntry.getYear();
+		int year = startDateEntry.getYear()-1900;
 		startDate = new Date(year,month,day);
+		dayB4=new Date(year, month, day-1);
 		
 		day = endDateEntry.getDayOfMonth();
 		month = endDateEntry.getMonth();
-		year = endDateEntry.getYear();
+		year = endDateEntry.getYear()-1900;
 		endDate = new Date(year,month,day);
+		dayAfter= new Date(year,month,day+1);
 		//db.generateReport(startDate,endDate);
 		Intent intent= new Intent(this, GenReportActivity.class);
 		startActivity(intent);

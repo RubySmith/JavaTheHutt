@@ -3,6 +3,7 @@ package com.example.potato;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -57,6 +58,11 @@ public class GenReportActivity extends Activity {
 	}
 
 	private void generateSpendingReport(){
+		Date startDate=DateRangeSelectionActivity.startDate;
+		Date endDate=DateRangeSelectionActivity.endDate;
+		Date dayB4= DateRangeSelectionActivity.dayB4;
+		Date dayAfter= DateRangeSelectionActivity.dayAfter;
+		
 		TableLayout tbl = (TableLayout)findViewById(R.id.TBL);
 		TableRow header = new TableRow(this);
 		TextView head=new TextView(this);
@@ -65,20 +71,23 @@ public class GenReportActivity extends Activity {
 		TableRow dateRow= new TableRow(this);
 		TextView dates=new TextView(this);
 		DateFormat df= DateFormat.getDateInstance();
-		String start=df.format(DateRangeSelectionActivity.startDate);
-		String end=df.format(DateRangeSelectionActivity.endDate);
+		String start=df.format(startDate);
+		String end=df.format(endDate);
 		dates.setText(start+"-"+end);
+		dateRow.addView(dates);
 		tbl.addView(header);
 		tbl.addView(dateRow);
 		HashMap <String, Double> categories=new HashMap<String, Double>();
 		String category;
 		for (Transaction t: trans){
-			category=t.getCategory();
-			if (categories.containsKey(category)){
-				categories.put(category, categories.get(category)+t.getAmmount());
-			}
-			else{
-				categories.put(category, t.getAmmount());
+			if (!t.getDate().before(startDate)&& t.getDate().before(dayAfter)){
+				category=t.getCategory();
+				if (categories.containsKey(category)){
+					categories.put(category, categories.get(category)+t.getAmmount());
+				}
+				else{
+					categories.put(category, t.getAmmount());
+				}
 			}
 		}
 		Set<String> keys=categories.keySet();
