@@ -55,6 +55,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
     
     //Creating Tables
+    // Add auto increment primary key
+    // Change 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		
@@ -120,18 +122,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 		
 	// Adding new account
-		public void addTransaction(Transaction trans) {
-			SQLiteDatabase db = this.getWritableDatabase();
+	public void addTransaction(Transaction trans) {
+		SQLiteDatabase db = this.getWritableDatabase();
 
-			ContentValues values = new ContentValues();
-			values.put(KEY_CATEGORY, trans.getCategory());
-			values.put(KEY_AMOUNT, trans.getAmmount());
-			values.put(KEY_DATE, trans.getUnixDate()); 
-			values.put(KEY_ACCOUNT, Current.getAccount().getName());
+		ContentValues values = new ContentValues();
+		values.put(KEY_CATEGORY, trans.getCategory());
+		values.put(KEY_AMOUNT, trans.getAmmount());
+		values.put(KEY_DATE, trans.getUnixDate()); 
+		values.put(KEY_ACCOUNT, Current.getAccount().getName());
 
-			// Inserting Row
-			db.insert(TABLE_TRANSACTIONS, null, values);
-			db.close(); // Closing database connection
+		// Inserting Row
+		db.insert(TABLE_TRANSACTIONS, null, values);
+		db.close(); // Closing database connection
 		}
 	
 	// Getting single profile

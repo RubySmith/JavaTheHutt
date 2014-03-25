@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class GenReportActivity extends Activity {
 
-	private String rt= DateRangeSelectionActivity.reportType;
+	private String rt= AccountsActivity.reportType;
 	private DatabaseHandler db=new DatabaseHandler(this);
 	//private Collection transData=db.generateReport();
 	ArrayList<Transaction> trans;

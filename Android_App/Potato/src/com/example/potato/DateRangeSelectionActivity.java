@@ -35,7 +35,7 @@ public class DateRangeSelectionActivity extends Activity {
 		getMenuInflater().inflate(R.menu.date_range_selection, menu);
 		return true;
 	}
-	public void onClickConfirm(View V){
+	public void onConfirm(View V){
 		int day = startDateEntry.getDayOfMonth();
 		int month = startDateEntry.getMonth();
 		int year = startDateEntry.getYear();
@@ -50,7 +50,7 @@ public class DateRangeSelectionActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
-	public void onClickCancel(View v){
+	public void onCancel(View v){
 		Intent intent = new Intent(this, AccountsActivity.class);
 		startActivity(intent);
 		finish();

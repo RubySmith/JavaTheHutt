@@ -20,7 +20,7 @@ public class AccountsActivity extends ListActivity {
 	ListView lv;
 	ArrayList<Account> accounts;
 	HashMap<String, Account> map;
-	protected String reportType;
+	protected static String reportType;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,7 +43,8 @@ public class AccountsActivity extends ListActivity {
 		}
 		else if (txt.getText().toString().equals("Generate Spending Report")){
 			reportType = "Spending";
-			intent= new Intent(this, DateRangeSelectionActivity.class);
+			Log.d("Debug" , "In spending report in AccountsActivity");
+			intent= new Intent(AccountsActivity.this, DateRangeSelectionActivity.class);
 		}
 		else if (txt.getText().toString().equals("Generate Source Report")){
 			reportType = "Source";

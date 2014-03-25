@@ -3,6 +3,7 @@ package com.example.potato;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -51,6 +52,8 @@ public class LoginActivity extends Activity {
 		String passWord= password.getText().toString();
 		if (check(userName,passWord)){
 			Current.setProfile(db.getProfile(userName));
+			Log.d("Debug", "In loggin activity, "+ userName+ " attempted to log in");
+			Log.d("Debug", "Actual value retrieved: "+db.getProfile(userName).getUsername());
 			Intent intent = new Intent(this, AccountsActivity.class);
 			startActivity(intent);
 			finish();
