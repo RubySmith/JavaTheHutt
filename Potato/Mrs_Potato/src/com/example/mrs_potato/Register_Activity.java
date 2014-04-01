@@ -50,6 +50,7 @@ public class Register_Activity extends Activity {
 		if (passWord.length()>2 && userName.length()>2){
 			try {
 			currentProfile= new Profile(userName, passWord);
+			System.out.println(currentProfile.getUsername()+", " + currentProfile.getPassword());
 			db.addProfile(currentProfile); //add to database
 			Intent intent = new Intent(this, Profile_Activity.class);
 			startActivity(intent); //problem

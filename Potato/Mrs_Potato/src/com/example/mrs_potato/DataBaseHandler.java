@@ -9,7 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.*;
 
 public class DataBaseHandler extends SQLiteOpenHelper{
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "Mr_PotatoDatabase";
 
     // tables and their fields in format: TABLE_($NAME), ($NAME)_FIELD
@@ -66,23 +66,23 @@ public class DataBaseHandler extends SQLiteOpenHelper{
                 TRANS_USER, TRANS_ACCNAME, TRANS_ACCNUM,
                 TABLE_ACCOUNTS, ACCOUNTS_USER, ACCOUNTS_NAME, ACCOUNTS_NUMBER);
         db.execSQL(CREATE_TRANSACTIONS_TABLE);
+        
         // add default user
         ContentValues values = new ContentValues();
         values.put(USERS_NAME, "admin"); // User name
         values.put(USERS_PASSWORD, "pass123"); // User password
         // insert username and password into table
-        db.insert(TABLE_USERS, null, values);
+        db.insert(TABLE_USERS, null, values); //code that inserts into dattabase
     }
 
     // Upgrading database
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older tables if existed
+        // Drop tables if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTIONS);
-        // Create tables again
-        onCreate(db);
+        onCreate(db);         // Create tables again
     }
     
     // SQL operations
@@ -115,21 +115,21 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 		Profile user = null;
 		// no matching username
 		if (cursor.getCount() == 0) {
-		throw new InvalidUserException("Username not found in database");
+		throw new InvalidUserException();
 		
 		}
 		// matching username
 		else {
 		// matching password
-			System.out.println("BOOOOOB");
+//			System.out.println("BOOOOOB");
 		if (cursor.getString(1).equals(password)) {
-			System.out.println("BOOB");
+//			System.out.println("BOOB");
 		    user = new Profile(cursor.getString(0), cursor.getString(1));
-		    System.out.println("user: " + user);
+//		    System.out.println("user: " + user);
 		}
 		// mismatched password
 		else {
-		    throw new InvalidPasswordException("Password is incorrect");
+		    throw new InvalidPasswordException();
 		}
 		}
 		// close out and return
@@ -137,7 +137,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
 		db.close();
 		
 		user.setAccounts(getAccounts(user));
-		System.out.println("WOOOO");
+//		System.out.println("WOOOO");
 		return user;
 	}
     
@@ -163,7 +163,7 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     }
 
     public ArrayList<Account> getAccounts(Profile user) {
-        System.out.println("MAAAAA");
+//        System.out.println("MAAAAA");
         SQLiteDatabase db = this.getReadableDatabase();
         String whereClause = String.format("%s=?", ACCOUNTS_USER);
         String[] fields = {ACCOUNTS_NAME, ACCOUNTS_NUMBER, ACCOUNTS_DISPLAY, ACCOUNTS_BALANCE, ACCOUNTS_INTEREST};
@@ -176,13 +176,13 @@ public class DataBaseHandler extends SQLiteOpenHelper{
             currentAccount.setAccountNumber(cursor.getString(1));
             currentAccount.setDisplayName(cursor.getString(2));
             currentAccount.setInterest(cursor.getFloat(4));
-            System.out.println("LAAAAA");
+//            System.out.println("LAAAAA");
             currentAccount.setTransactions(getTransactions(user, currentAccount));
-            System.out.println("MOOO");
+//            System.out.println("MOOO");
             accounts.add(currentAccount);
             cursor.moveToNext();
         }
-        System.out.println("WAAAAA");
+//        System.out.println("WAAAAA");
         return accounts;
     }
     
@@ -210,11 +210,11 @@ public class DataBaseHandler extends SQLiteOpenHelper{
     }
 	
 	public ArrayList<Transaction> getTransactions(Profile user, Account account) {
-		System.out.println("TRANS");
+//		System.out.println("TRANS");
         SQLiteDatabase db = this.getReadableDatabase();
         String whereClause = String.format("%s=? AND %s=? AND %s=?", TRANS_USER, TRANS_ACCNAME, TRANS_ACCNUM);
         String[] fields = {TRANS_NAME, TRANS_CAT, TRANS_AMOUNT, TRANS_ISDEPOSIT, TRANS_USERTIME, TRANS_SYSTIME, "rowid"};
-        System.out.println("LOOOOOSER");
+//        System.out.println("LOOOOOSER");
         Cursor cursor = db.query(TABLE_TRANSACTIONS, fields, whereClause, new String[]{user.getUsername(), account.getName(), account.getAccountNumber()},
                 null, null, null);
         cursor.moveToFirst();

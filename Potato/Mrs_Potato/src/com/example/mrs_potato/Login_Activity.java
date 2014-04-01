@@ -15,8 +15,8 @@ import android.widget.Toast;
 public class Login_Activity extends Activity {
 	private EditText username;
 	private EditText password;
-	DataBaseHandler db=new DataBaseHandler(this);
-	public static Profile p;
+	private DataBaseHandler db=new DataBaseHandler(this);
+	private static Profile p;
 	
 
 	@Override
@@ -43,8 +43,6 @@ public class Login_Activity extends Activity {
 			String passWord=password.getText().toString();
 			System.out.println(userName + ", " + passWord);
 			p = db.getProfile(userName, passWord);
-//			System.out.println("Profile: " + p);
-//			System.out.println(p.getUsername());
 			Intent intent = new Intent(this, Profile_Activity.class);
 			intent.putExtra("Title", userName);
 			startActivity(intent);
@@ -56,6 +54,8 @@ public class Login_Activity extends Activity {
 		}catch(Exception e){
 			System.out.println("exception" + e);
 		}
-		
+	}
+	public static Profile getCurrentProfile(){
+		return p;
 	}
 }

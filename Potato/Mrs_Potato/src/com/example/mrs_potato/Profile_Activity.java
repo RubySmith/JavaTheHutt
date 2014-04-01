@@ -38,20 +38,25 @@ public class Profile_Activity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_);
 		map = new HashMap<String, Account>();
-		currentProfile = Login_Activity.p;
+		currentProfile = Login_Activity.getCurrentProfile();
 		if (currentProfile == null)
 			currentProfile = Register_Activity.getCurrentProfile();
-		System.out.println("CurrentProfile: " + currentProfile);
+		System.out.println("CurrentProfile: " + currentProfile.getUsername());
 	     accounts = db.getAccounts(currentProfile);
 //		greeting user, dynamically display content to xml page
 		RelativeLayout lView = (RelativeLayout)findViewById(R.id.relativeLayout);
 	     greeting = new TextView(this);
 	     greeting.setText("Hi " + currentProfile.getUsername());
+			System.out.println("CurrentProfile: " + currentProfile.getUsername());
 	     lView.addView(greeting);
 	}
 	@Override 
 	public void onResume(){
 		super.onResume();
+		if (currentAccount != null){ //after actually clicking on an account, saves current balance by defining the current account  
+			currentAccount = Account_Activity.currentAccount;
+			currentAccount.setBalance(Account_Activity.getBalance());
+		}
 		//generating accounts
 	    accounts = db.getAccounts(currentProfile);
 	    map = new HashMap<String, Account>();
@@ -64,6 +69,8 @@ public class Profile_Activity extends Activity {
 		//putting account names with accounts for onListClick
 		for (Account a:accounts){
 			map.put(a.getName(), a);
+			if (currentAccount!= null && a.getName().equals(currentAccount.getName()))//saves currentBalance
+				a.setBalance(currentAccount.getBalance());
 		}
 		adapter = new ArrayAdapter<String>(this,  android.R.layout.simple_list_item_1, accountNames);
 		adapter.notifyDataSetChanged();
@@ -76,7 +83,7 @@ public class Profile_Activity extends Activity {
 	private OnItemClickListener mMessageClickedHandler = new OnItemClickListener() {
 		public void onItemClick(AdapterView parent, View v, int position, long id) {
 			// Do something in response to the click
-			System.out.println("doodoo");
+//			System.out.println("doodoo");
 			 accounts = db.getAccounts(currentProfile);
 			String selectedFromList =(String) (listview.getItemAtPosition(position)); //name of account selected
 			currentAccount = map.get(selectedFromList); //account being clicked
