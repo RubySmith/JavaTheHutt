@@ -8,9 +8,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SpendingReport_Activity" >
 
-    <TextView
+    <TableLayout
+  android:id="@+id/TBL"
+  android:layout_width="fill_parent"
+  android:layout_marginRight="2dp"
+  android:layout_marginLeft="2dp"
+  android:layout_height="wrap_content"
+  android:background="@android:color/white">
+  <TableRow>
+   <TextView
+    android:textColor="@android:color/black"
+    android:layout_margin="1dp"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:background="#ffcccccc"
+    android:text="Account" />
+   <TextView
+    android:textColor="@android:color/black"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:layout_margin="1dp"
+    android:background="#ffcccccc"
+    android:text="Category" />
+ 
+      <TextView
+    android:textColor="@android:color/black"
+    android:layout_margin="1dp"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:background="#ffcccccc"
+    android:text="Amount" />
+   <TextView
+    android:textColor="@android:color/black"
+    android:gravity="center_horizontal"
+    android:layout_weight="1"
+    android:layout_margin="1dp"
+    android:background="#ffcccccc"
+    android:text="Date" />
+
+   
+  </TableRow>
+
+ </TableLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_below="@+id/TBL"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

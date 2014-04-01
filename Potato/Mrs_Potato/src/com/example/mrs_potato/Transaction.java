@@ -40,7 +40,7 @@ public class Transaction {
 	public void setID(long id){
 		this.id=id;
 	}
-	public Calendar getUserTimeStamp() {
+	public GregorianCalendar getUserTimeStamp() {
 		return userTime;
 	}
 	public boolean isDeposit() {

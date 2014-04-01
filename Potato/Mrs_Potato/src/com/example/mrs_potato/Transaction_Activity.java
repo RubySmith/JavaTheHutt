@@ -1,6 +1,7 @@
 package com.example.mrs_potato;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
@@ -19,7 +20,7 @@ public class Transaction_Activity extends Activity {
 	private static Profile currentProfile;
 	private GregorianCalendar userTime;
 	private GregorianCalendar sysTime;
-	private Transaction transaction = new Transaction(null, 0, false, null, null, null); //initialize transaction object to be sent
+	private static Transaction transaction = new Transaction(null, 0, false, null, null, null); //initialize transaction object to be sent
 	private SpendingReport sr;
 	DataBaseHandler db=new DataBaseHandler(this);
 
@@ -30,10 +31,17 @@ public class Transaction_Activity extends Activity {
 		cat = (EditText)findViewById(R.id.editText1);
 		am = (EditText)findViewById(R.id.editText2);
 		TimeZone tz = TimeZone.getTimeZone("EST"); //eastern time zone, not working
-//		System.out.println("TZ: " + tz);
 		userTime = new GregorianCalendar(tz);
 		sysTime = new GregorianCalendar(tz);
-		currentAccount = Account_Activity.currentAccount;
+		
+		Date date = userTime.getTime();
+	    Calendar cal = Calendar.getInstance(tz);
+	    cal.setTime(date);
+	    int year = cal.get(Calendar.YEAR);
+	    int month = cal.get(Calendar.MONTH);
+	    int day = cal.get(Calendar.DAY_OF_MONTH);
+	    userTime.set(year, month, day);
+		currentAccount = Profile_Activity.getCurrentAccount();
 		currentProfile = Profile_Activity.currentProfile;
 		sr = new SpendingReport();
 	}
@@ -57,7 +65,9 @@ public class Transaction_Activity extends Activity {
 		//change balance in account
 		double c =currentAccount.getBalance();
 		c = c + AMOUNT;
+		System.out.println("DDDD: " + c);
 		currentAccount.setBalance(c);
+		System.out.println("CA: " +currentAccount.getName()+ ", "+  currentAccount.getBalance());
 //		Intent intent = new Intent(this, Account_Activity.class);
 //		startActivity(intent);
 		finish();
@@ -77,6 +87,10 @@ public class Transaction_Activity extends Activity {
 //		Intent intent = new Intent(this, Account_Activity.class);
 //		startActivity(intent);
 		finish();
+	}
+	
+	public static Transaction getTransaction(){
+		return transaction;
 	}
 	
 	public void onCancel(View v){

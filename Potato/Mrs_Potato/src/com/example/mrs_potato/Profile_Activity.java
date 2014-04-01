@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 
 
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -101,6 +102,17 @@ public class Profile_Activity extends Activity {
 	public void onAddAccount(View v){
 		Intent intent = new Intent(this, RegisterAccount_Activity.class);
 		startActivity(intent);		
+	}
+	public void onGenerateSpendingReport(View v){
+		try{
+			Intent intent = new Intent(this, SpendingReport_Activity.class);
+			startActivity(intent);
+		}catch(Exception e){
+			System.out.println("error");
+		}
+	}
+	public void onLogOut(View v){
+		finish();
 	}
 
 }

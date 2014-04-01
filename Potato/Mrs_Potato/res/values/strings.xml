@@ -35,5 +35,6 @@
     <string name="String_Deposit">Deposit</string>
     <string name="String_Withdraw">Withdraw</string>
     <string name="title_activity_spending_report_">SpendingReport_Activity</string>
+    <string name="String_LogOut">X</string>
 
 </resources>

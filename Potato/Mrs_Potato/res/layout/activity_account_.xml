@@ -10,23 +10,23 @@
     tools:context=".Account_Activity" >
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="53dp"
-        android:onClick="onGenerateSpendingReport"
-        android:text="@string/String_GenerateSpendingReport" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="150dp"
         android:onClick="onAddTransaction"
         android:text="@string/String_AddTransaction" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:onClick="onCancel"
+        android:text="@string/String_Cancel" />
 
 </RelativeLayout>
