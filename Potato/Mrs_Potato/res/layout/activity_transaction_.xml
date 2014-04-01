@@ -50,11 +50,32 @@
         android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/button3"
+        android:onClick="onWithdraw"
+        android:text="@string/String_Withdraw" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toLeftOf="@+id/button2"
+        android:onClick="onDeposit"
+        android:text="@string/String_Deposit" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp"
         android:onClick="onCancel"
         android:text="@string/String_Cancel" />
 
@@ -63,29 +84,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="57dp"
-        android:layout_toLeftOf="@+id/button3"
+        android:layout_marginTop="62dp"
+        android:layout_toLeftOf="@+id/button2"
         android:text="@string/String_Category"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/textView2"
-        android:onClick="onWithdraw"
-        android:text="@string/String_Withdraw" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
-        android:layout_marginBottom="17dp"
-        android:layout_toLeftOf="@+id/button2"
-        android:onClick="onDeposit"
-        android:text="@string/String_Deposit" />
 
 </RelativeLayout>

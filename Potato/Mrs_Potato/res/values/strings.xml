@@ -12,7 +12,7 @@
     <string name="String_onRegister">Register</string>
     <string name="String_Cancel">Cancel</string>
     <string name="String_Username">Username:</string>
-    <string name="String_Password">Passwowrd</string>
+    <string name="String_Password">Password:</string>
     <string name="Title_Registration">Registration</string>
     <string name="title_activity_profile_">Profile_Activity</string>
     <string name="String_onLogin">Login</string>

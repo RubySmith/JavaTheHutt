@@ -33,14 +33,14 @@ public class Transaction_Activity extends Activity {
 		TimeZone tz = TimeZone.getTimeZone("EST"); //eastern time zone, not working
 		userTime = new GregorianCalendar(tz);
 		sysTime = new GregorianCalendar(tz);
-		
-		Date date = userTime.getTime();
-	    Calendar cal = Calendar.getInstance(tz);
-	    cal.setTime(date);
-	    int year = cal.get(Calendar.YEAR);
-	    int month = cal.get(Calendar.MONTH);
-	    int day = cal.get(Calendar.DAY_OF_MONTH);
-	    userTime.set(year, month, day);
+//		
+//		Date date = userTime.getTime();
+//	    Calendar cal = Calendar.getInstance(tz);
+//	    cal.setTime(date);
+//	    int year = cal.get(Calendar.YEAR);
+//	    int month = cal.get(Calendar.MONTH);
+//	    int day = cal.get(Calendar.DAY_OF_MONTH);
+//	    userTime.set(year, month, day);
 		currentAccount = Profile_Activity.getCurrentAccount();
 		currentProfile = Profile_Activity.currentProfile;
 		sr = new SpendingReport();

@@ -38,7 +38,7 @@ public class RegisterAccount_Activity extends Activity {
 		getMenuInflater().inflate(R.menu.registeraccount_, menu);
 		return true;
 	}
-	
+
 	public void onCancel(View v){
 		finish();
 	}
@@ -66,6 +66,6 @@ public class RegisterAccount_Activity extends Activity {
 			Toast.makeText(getApplicationContext(), "Account already exists..", Toast.LENGTH_SHORT).show();
 		}
 		finish();
-		
+
 	}
 }

@@ -41,8 +41,10 @@ public class Login_Activity extends Activity {
 		try{
 			String userName=username.getText().toString();
 			String passWord=password.getText().toString();
+			System.out.println(userName + ", " + passWord);
 			p = db.getProfile(userName, passWord);
-			System.out.println(p.getUsername());
+//			System.out.println("Profile: " + p);
+//			System.out.println(p.getUsername());
 			Intent intent = new Intent(this, Profile_Activity.class);
 			intent.putExtra("Title", userName);
 			startActivity(intent);
@@ -51,7 +53,9 @@ public class Login_Activity extends Activity {
 			Toast.makeText(getApplicationContext(), "Invalid Username ", Toast.LENGTH_SHORT).show();
 		}catch(InvalidPasswordException e){
 		Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
-	}
+		}catch(Exception e){
+			System.out.println("exception" + e);
+		}
 		
 	}
 }

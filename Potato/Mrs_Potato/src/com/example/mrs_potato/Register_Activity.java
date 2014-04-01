@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class Register_Activity extends Activity {
 	private EditText username;
 	private EditText password;
+	private static Profile currentProfile;
 	DataBaseHandler db=new DataBaseHandler(this);
 
 	@Override
@@ -30,6 +31,9 @@ public class Register_Activity extends Activity {
 		getMenuInflater().inflate(R.menu.register_, menu);
 		return true;
 	}
+	public static Profile getCurrentProfile(){
+		return currentProfile;
+	}
 
 	public void onCancel(View v){
 		finish();
@@ -38,23 +42,24 @@ public class Register_Activity extends Activity {
 		String userName=username.getText().toString();
 		if (userName.length()<2){
 			Toast.makeText(getApplicationContext(), "Username too short.", Toast.LENGTH_SHORT).show();
-			return;
 		}
 		String passWord=password.getText().toString();
 		if (passWord.length()<2){
 			Toast.makeText(getApplicationContext(), "Password too short", Toast.LENGTH_SHORT).show();
-			return;
 		}
 		if (passWord.length()>2 && userName.length()>2){
 			try {
-			db.addProfile(new Profile(userName, passWord)); //add to database
-//			Current.setProfile(db.getProfile(userName, passWord));
+			currentProfile= new Profile(userName, passWord);
+			db.addProfile(currentProfile); //add to database
 			Intent intent = new Intent(this, Profile_Activity.class);
-			startActivity(intent);
+			startActivity(intent); //problem
 			finish();
 			}catch(InvalidUserException e){
 				Toast.makeText(getApplicationContext(), "Username taken. Please choose again.", Toast.LENGTH_SHORT).show();
+			}catch(Exception e){
+				Toast.makeText(getApplicationContext(), "Invalid Password. Please choose again.", Toast.LENGTH_SHORT).show();
 			}
+
 		}
 	}
 }

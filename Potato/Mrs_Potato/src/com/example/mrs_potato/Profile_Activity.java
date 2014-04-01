@@ -23,7 +23,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Profile_Activity extends Activity {
-	private String title;
 	public static  Profile currentProfile;
 	private static Account currentAccount; //send Account obj to AccountActivity
 	private TextView greeting = null;
@@ -38,11 +37,13 @@ public class Profile_Activity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile_);
-		title= getIntent().getExtras().getString("Title"); // to pass Strings between Activities
 		map = new HashMap<String, Account>();
 		currentProfile = Login_Activity.p;
+		if (currentProfile == null)
+			currentProfile = Register_Activity.getCurrentProfile();
+		System.out.println("CurrentProfile: " + currentProfile);
 	     accounts = db.getAccounts(currentProfile);
-		//greeting user, dynamically display content to xml page
+//		greeting user, dynamically display content to xml page
 		RelativeLayout lView = (RelativeLayout)findViewById(R.id.relativeLayout);
 	     greeting = new TextView(this);
 	     greeting.setText("Hi " + currentProfile.getUsername());

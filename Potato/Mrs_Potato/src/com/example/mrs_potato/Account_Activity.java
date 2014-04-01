@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class Account_Activity extends Activity {
 	public static Account currentAccount;
 	private String accountName;
-	private double balance;
+	private static double balance;
 	private float interest;
 	private String accountNumber;
 	private String displayName;
@@ -23,9 +23,9 @@ public class Account_Activity extends Activity {
 	RelativeLayout lView ;
 	private TextView accName;
 	private TextView bal;
-	private TextView inter;
-	private TextView accNum;
-	private TextView dn;
+//	private TextView inter;
+//	private TextView accNum;
+//	private TextView dn;
 
 
 	@SuppressLint("NewApi")
@@ -35,11 +35,12 @@ public class Account_Activity extends Activity {
 		setContentView(R.layout.activity_account_);
 		currentAccount = Profile_Activity.getCurrentAccount();
 		balance = currentAccount.getBalance();
+		currentAccount.setBalance(balance);
 //		//Textviews to show up on xml page
 		RelativeLayout lView = (RelativeLayout)findViewById(R.id.relativeLayout);
 		bal = new TextView(this);
-		bal.setX(110);
-		bal.setY(130);
+		bal.setX(122);
+		bal.setY(330);
 		bal.setText("Current Balance: $" + balance);
 		lView.addView(bal);
 
@@ -57,10 +58,12 @@ public class Account_Activity extends Activity {
 		accountNumber = currentAccount.getAccountNumber();
 		displayName = currentAccount .getDisplayName();
 		accName = new TextView(this);
-		accName.setX(130);
-		accName.setY(50);
+		accName.setX(140);
+		accName.setY(250);
 		accName.setText("Account Name: " + accountName);
 		bal.setText("Current Balance: $" + balance);
+		currentAccount.setBalance(balance);
+		System.out.println("ACCount: " + currentAccount.getName() + ", " +currentAccount.getBalance());
 		
 		lView.addView(accName);
 	}

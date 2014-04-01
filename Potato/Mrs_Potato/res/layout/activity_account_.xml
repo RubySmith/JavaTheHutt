@@ -14,8 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
+        android:layout_toLeftOf="@+id/button2"
         android:onClick="onAddTransaction"
         android:text="@string/String_AddTransaction" />
 
@@ -23,9 +22,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="26dp"
         android:onClick="onCancel"
         android:text="@string/String_Cancel" />
 
