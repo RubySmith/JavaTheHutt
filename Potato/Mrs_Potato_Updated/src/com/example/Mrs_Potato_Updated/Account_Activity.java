@@ -1,4 +1,4 @@
-package com.example.mrs_potato;
+package com.example.Mrs_Potato_Updated;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -8,13 +8,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Account_Activity extends Activity {
-	public static Account currentAccount;
+	private static Account currentAccount;
 	private String accountName;
 	private static double balance;
-	
-	RelativeLayout lView ;
+	private RelativeLayout lView ;
 	private TextView accName;
 	private TextView bal;
 
@@ -27,20 +27,19 @@ public class Account_Activity extends Activity {
 		balance = currentAccount.getBalance();
 		currentAccount.setBalance(balance);
 //		//Textviews to show up on xml page
-		RelativeLayout lView = (RelativeLayout)findViewById(R.id.relativeLayout);
+		lView = (RelativeLayout)findViewById(R.id.relativeLayout);
 		bal = new TextView(this);
 		bal.setX(122);
 		bal.setY(430);
 		bal.setText("Current Balance: $" + balance);
 		lView.addView(bal);
-
-		
 	}
+	
 	@SuppressLint("NewApi")
 	@Override 
 	public void onResume(){
 		super.onResume();
-		RelativeLayout lView = (RelativeLayout)findViewById(R.id.relativeLayout);
+		lView = (RelativeLayout)findViewById(R.id.relativeLayout);
 		currentAccount = Profile_Activity.getCurrentAccount();
 		accountName = currentAccount.getName();
 		balance = currentAccount.getBalance();
@@ -49,9 +48,7 @@ public class Account_Activity extends Activity {
 		accName.setY(350);
 		accName.setText("Account Name: " + accountName);
 		bal.setText("Current Balance: $" + balance);
-		System.out.println("AAAAAAAAAAAAA");
 		currentAccount.setBalance(balance);
-//		System.out.println("ACCount: " + currentAccount.getName() + ", " +currentAccount.getBalance());
 		
 		lView.addView(accName);
 	}
@@ -64,14 +61,23 @@ public class Account_Activity extends Activity {
 	}
 	
 	public void onAddTransaction(View v){
-		Intent intent = new Intent(this, Transaction_Activity.class);
-		startActivity(intent);
+		try{
+			Intent intent = new Intent(this, Transaction_Activity.class);
+			startActivity(intent);
+		}catch(Exception e){
+			Toast.makeText(getApplicationContext(), "Can't add Transaction ", Toast.LENGTH_SHORT).show();
+		}
 	}
+	
 	public void onCancel(View v){
 		finish();
 	}
+	
 	public static double getBalance(){
 		return balance;
 	}
-
+	
+	public static Account getCurrentAccount(){
+		return currentAccount;
+	}
 }

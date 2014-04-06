@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Account_Activity extends Activity {
 	public static Account currentAccount;
@@ -64,8 +65,13 @@ public class Account_Activity extends Activity {
 	}
 	
 	public void onAddTransaction(View v){
+		try{
 		Intent intent = new Intent(this, Transaction_Activity.class);
 		startActivity(intent);
+		}catch(Exception e){
+			Toast.makeText(getApplicationContext(), "Can't add Transaction ", Toast.LENGTH_SHORT).show();
+			
+		}
 	}
 	public void onCancel(View v){
 		finish();
