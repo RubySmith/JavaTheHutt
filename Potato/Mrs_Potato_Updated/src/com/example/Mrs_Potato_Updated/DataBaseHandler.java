@@ -19,88 +19,88 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseHandler extends SQLiteOpenHelper {
 
     /**
-	 * 
-	 */
+	 * private static final instance variable.
+     */
     private static final int DATABASE_VERSION = 2;
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String DATABASE_NAME = "Copy_Of_Main_Database";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TABLE_USERS = "users";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String USERS_NAME = "name";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String USERS_PASSWORD = "password";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TABLE_ACCOUNTS = "accounts";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String ACCOUNTS_USER = "user";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String ACCOUNTS_NAME = "name";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String ACCOUNTS_BALANCE = "balance";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TABLE_TRANSACTIONS = "transactions";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TRANS_CAT = "category";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TRANS_USER = "user";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TRANS_ACCNAME = "account_name";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TRANS_AMOUNT = "amount";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TRANS_ISDEPOSIT = "is_deposit";
 
     /**
-	 * 
+	 * private static final instance variable.
 	 */
     private static final String TRANS_USERTIME = "user_time";
 
     /**
      * 
-     * 
+     * DataBaseHandler Constructor.
      * @param context
      *            context
      */
@@ -152,8 +152,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * 
-     * 
+     * Adds profile to database.
+     * @throws InvalidUserException if user already exists in database
      * @param user
      *            profile to be added
      * @throws InvalidUserException
@@ -177,7 +177,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * 
+     * Returns profile that corresponds to correct username and password.
      * @param username
      *            username of profile
      * @param password
@@ -219,12 +219,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        user.setAccounts(getAccounts(user));
+        user.setAccountsList(getAccounts(user));
         return user;
     }
 
     /**
-     * 
+     * Adds account to database.
      * @param user profile
      * @param account account
      * @throws InvalidAccountException checks for invalid account
@@ -251,7 +251,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     /**
      * 
-     * 
+     * Returns arraylist of accounts associated with profile.
      * @param user profile
      * @return List of accounts
      */
@@ -274,7 +274,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * 
+     * Adds transaction to database.
      * @param user profile
      * @param account account
      * @param transaction transaction to be added
@@ -302,7 +302,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * 
+     * Returns arraylist of transaction associated with profile and account.
      * @param user profile
      * @param account account
      * @return list of transactions
@@ -342,14 +342,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public class InvalidUserException extends Exception {
         
         /**
-         * 
+         * InvalidUserException.
          */
         public InvalidUserException() {
             super();
         }
         
         /**
-         * 
+         * Message for InvalidUserException.
          * @param message message
          */
         public InvalidUserException(String message) {
@@ -366,14 +366,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public class InvalidPasswordException extends Exception {
         
         /**
-         * 
+         * InvalidPasswordException.
          */
         public InvalidPasswordException() {
             super();
         }
         
         /**
-         * 
+         * Message for InvalidPasswordException.
          * @param message message
          */
         public InvalidPasswordException(String message) {
@@ -390,14 +390,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     public class InvalidAccountException extends Exception {
         
         /**
-         * 
+         * InvalidAccountException.
          */
         public InvalidAccountException() {
             super();
         }
         
         /**
-         * 
+         * Message for InvalidAccountException.
          * @param message message
          */
         public InvalidAccountException(String message) {

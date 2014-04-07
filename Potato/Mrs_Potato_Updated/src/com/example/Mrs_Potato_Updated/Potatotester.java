@@ -9,59 +9,79 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
-public class Potato_Tester extends
+/**
+ * 
+ * @author Ruby
+ *
+ */
+public class Potatotester extends
         ActivityInstrumentationTestCase2<MainActivity> {
+    
+    /**
+     * private instance variable name.
+     */
     private Solo solo;
 
-    public Potato_Tester() {
+    /**
+     * Constructor.
+     */        
+    public Potatotester() {
         super(MainActivity.class);
     }
 
+    /**
+     * @throws Exception exception
+     */
     protected void setUp() throws Exception {
         super.setUp();
         this.solo = new Solo(getInstrumentation());
         getActivity();
     }
 
+    /**
+     * Tests the mainActivity.
+     */
     public void testMain() {
         // testing login
         solo.clickOnButton("Login");
         solo.waitForDialogToClose(10000);
-        solo.waitForActivity("Login_Activity", 200);
+        solo.waitForActivity("Loginactivity", 200);
         solo.assertCurrentActivity("Failure to start Second Activity",
-                Login_Activity.class);
+                Loginactivity.class);
         solo.sleep(200);
         solo.goBack();
         solo.sleep(200);
         // testing register
         solo.clickOnButton("Register");
         solo.sleep(200);
-        solo.typeText((EditText) solo.getView(R.id.editText1), "NewUser3");
+        solo.typeText((EditText) solo.getView(R.id.editText1), "NewUser6");
         solo.typeText((EditText) solo.getView(R.id.editText2), "password");
         solo.clickOnButton("Register");
         solo.waitForActivity("Profile_Activity");
         solo.assertCurrentActivity("Failure to start Profile Activity",
-                Profile_Activity.class);
+                Profileactivity.class);
         solo.sleep(300);
         solo.finishOpenedActivities();
     }
 
+    /**
+     * Tests the loginActivity.
+     */
     public void testLogin() {
-        // testing login
         Intent intent = new Intent(getInstrumentation().getContext(),
-                Login_Activity.class);
+                Loginactivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getInstrumentation().startActivitySync(intent);
         solo.sleep(1000);
         solo.assertCurrentActivity("Failure to start Login Activity",
-                Login_Activity.class);
+                Loginactivity.class);
         solo.enterText((EditText) solo.getView(R.id.editText1), "poopie");
         solo.enterText((EditText) solo.getView(R.id.editText2), "poopie");
         solo.clickOnButton("Login");
         solo.waitForDialogToClose(10000);
         solo.waitForActivity("Profile_Activity", 200);
         solo.assertCurrentActivity("Failure to start Third Activity",
-                Profile_Activity.class);
+                Profileactivity.class);
         solo.sleep(200);
         solo.clickOnButton("X");
         // testing cancel login
@@ -73,28 +93,34 @@ public class Potato_Tester extends
         solo.finishOpenedActivities();
     }
 
+    /**
+     * Local method to login.
+     */
     private void login() {
         try {
             Intent intent = new Intent(getInstrumentation().getContext(),
-                    Login_Activity.class);
+                    Loginactivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getInstrumentation().startActivitySync(intent);
             solo.sleep(1000);
             solo.assertCurrentActivity("Failure to start Second Activity",
-                    Login_Activity.class);
+                    Loginactivity.class);
             solo.enterText((EditText) solo.getView(R.id.editText1), "poopie");
             solo.enterText((EditText) solo.getView(R.id.editText2), "poopie");
             solo.clickOnButton("Login");
             solo.waitForDialogToClose(1000);
             solo.waitForActivity("Profile_Activity", 200);
             solo.assertCurrentActivity("Failure to start Third Activity",
-                    Profile_Activity.class);
+                    Profileactivity.class);
             solo.sleep(70);
         } catch (Exception e) {
             Log.d("ERROR", e.toString());
         }
     }
 
+    /**
+     * Tests AddAccount method.
+     */
     public void testAddAccount() {
         login();
         solo.clickOnButton("Add Account");
@@ -102,28 +128,31 @@ public class Potato_Tester extends
         // testing Add Account
         solo.waitForActivity("RegisterAccount_Activity", 200);
         solo.assertCurrentActivity("Failure to start Register Activity",
-                RegisterAccount_Activity.class);
+                Registeraccountactivity.class);
         solo.enterText((EditText) solo.getView(R.id.editText1), "Account4");
         solo.enterText((EditText) solo.getView(R.id.editText2), "20");
         solo.clickOnButton("Add Account");
         solo.waitForActivity("Profile_Activity", 200);
         solo.assertCurrentActivity("Failure to start Profile_Activity",
-                Profile_Activity.class);
+                Profileactivity.class);
         solo.sleep(200);
         // testing cancel Add Account
         solo.clickOnButton("Add Account");
         solo.waitForDialogToClose(10000);
         solo.waitForActivity("RegisterAccount_Activity", 200);
         solo.assertCurrentActivity("Failure to start Register_Activity",
-                RegisterAccount_Activity.class);
+                Registeraccountactivity.class);
         solo.clickOnButton("Cancel");
         solo.waitForActivity("Profile_Activity", 200);
         solo.assertCurrentActivity("Failure to start Profile_Activity",
-                Profile_Activity.class);
+                Profileactivity.class);
         solo.sleep(200);
         solo.finishOpenedActivities();
     }
 
+    /**
+     * Tests profileActivity.
+     */
     public void testProfile() {
         login();
         ListView lv = (ListView) solo.getView(R.id.listView1);
@@ -146,7 +175,9 @@ public class Potato_Tester extends
         solo.finishOpenedActivities();
     }
 
-    // Katherine Pham
+    /**
+     * Tests addTransaction method.
+     */
     public void testAddTransactions() {
         login();
         ListView lv = (ListView) solo.getView(R.id.listView1);
@@ -183,7 +214,10 @@ public class Potato_Tester extends
             solo.finishOpenedActivities();
         }
     }
-
+    
+    /**
+     * @throws Exception exception
+     */
     protected void tearDown() throws Exception {
         super.tearDown();
     }

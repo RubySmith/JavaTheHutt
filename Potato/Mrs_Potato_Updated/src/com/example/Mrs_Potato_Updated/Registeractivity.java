@@ -1,6 +1,7 @@
 package com.example.Mrs_Potato_Updated;
 
 import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidPasswordException;
+
 import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidUserException;
 
 import android.os.Bundle;
@@ -11,11 +12,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Register_Activity extends Activity {
+/**
+ * 
+ * @author Ruby
+ *
+ */
+public class Registeractivity extends Activity {
+    /**
+     *private instance variable.
+     */
     private EditText username;
+    
+    /**
+     * private instance variable.
+     */
     private EditText password;
+    
+    /**private static instance variable.
+     * 
+     */
     private static Profile currentProfile = null;
-    DataBaseHandler db = new DataBaseHandler(this);
+    
+    /**
+     * private instance variable.
+     */
+    private DataBaseHandler db = new DataBaseHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,31 +53,47 @@ public class Register_Activity extends Activity {
         return true;
     }
 
+    /**
+     * Returns the currentProfile.
+     * @return current profile
+     */
     public static Profile getCurrentProfile() {
         return currentProfile;
     }
-
+    
+    /**
+     *Finishes the current activity and returns to the previous activity. 
+     * @param v view
+     */
     public void onCancel(View v) {
         finish();
     }
 
+    /**
+     * Confirms user registration and starts a new intent of activity RegisterActivity.
+     * @param v view
+     * @throws InvalidUserException checks for invalid user
+     * @throws InvalidPasswordException checks for invalid password
+     */
     public void onRegisterUser(View v) throws InvalidUserException,
             InvalidPasswordException {
         String userName = username.getText().toString();
-        if (userName.length() < 2)
+        if (userName.length() < 2) {
             Toast.makeText(getApplicationContext(), "Username too short.",
                     Toast.LENGTH_SHORT).show();
+        }
         String passWord = password.getText().toString();
-        if (passWord.length() < 2)
+        if (passWord.length() < 2) {
             Toast.makeText(getApplicationContext(), "Password too short",
                     Toast.LENGTH_SHORT).show();
+        }
         if (passWord.length() >= 2 && userName.length() >= 2) {
             try {
                 currentProfile = new Profile(userName, passWord);
                 System.out.println(currentProfile.getUsername() + ", "
                         + currentProfile.getPassword());
                 db.addProfile(currentProfile); // add to database
-                Intent intent = new Intent(this, Profile_Activity.class);
+                Intent intent = new Intent(this, Profileactivity.class);
                 startActivity(intent); // problem
                 finish();
             } catch (InvalidUserException e) {

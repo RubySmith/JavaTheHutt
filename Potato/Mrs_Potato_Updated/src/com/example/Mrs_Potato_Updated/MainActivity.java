@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 
+/**
+ * Main activity class.
+ * 
+ * @author Ruby Smith
+ *
+ */
 public class MainActivity extends Activity {
 
     @Override
@@ -20,14 +26,22 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+    
+    /**
+     * Starts new intent of Register Activity.
+     * @param v view
+     */
     public void onRegister(View v) {
-        Intent intent = new Intent(this, Register_Activity.class);
+        Intent intent = new Intent(this, Registeractivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Starts new intent of loginActivity.
+     * @param v view
+     */
     public void onLogin(View v) {
-        Intent intent = new Intent(this, Login_Activity.class);
+        Intent intent = new Intent(this, Loginactivity.class);
         startActivity(intent);
     }
 

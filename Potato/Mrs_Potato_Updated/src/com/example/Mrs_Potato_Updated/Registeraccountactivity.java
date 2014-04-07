@@ -10,11 +10,32 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegisterAccount_Activity extends Activity {
+/**
+ * 
+ * @author Ruby
+ *
+ */
+public class Registeraccountactivity extends Activity {
+    
+    /**
+     * private instance variable.
+     */
     private static Profile currentProfile;
+    
+    /**
+     * private instance variable.
+     */
     private EditText accName;
+    
+    /**
+     * private instance variable.
+     */
     private EditText bal;
-    DataBaseHandler db = new DataBaseHandler(this);
+    
+    /**
+     * private instance variable.
+     */
+    private DataBaseHandler db = new DataBaseHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +43,7 @@ public class RegisterAccount_Activity extends Activity {
         setContentView(R.layout.activity_registeraccount_);
         accName = (EditText) findViewById(R.id.editText1);
         bal = (EditText) findViewById(R.id.editText2);
-        currentProfile = Profile_Activity.getCurrentProfile();
+        currentProfile = Profileactivity.getCurrentProfile();
         System.out.println("Account " + currentProfile.getUsername());
     }
 
@@ -33,10 +54,19 @@ public class RegisterAccount_Activity extends Activity {
         return true;
     }
 
+    /**
+     * Finishes the current activity and returns to the previous activity. 
+     * @param v view
+     */
     public void onCancel(View v) {
         finish();
     }
 
+    /**
+     * Confirms account registration and then finishes RegisterAccount Activity and returns to Profile Activity.
+     * @param v view
+     * @throws Exception exception
+     */
     @SuppressLint("NewApi")
     public void onAddAccount(View v) throws Exception {
         System.out.println("LOOO");

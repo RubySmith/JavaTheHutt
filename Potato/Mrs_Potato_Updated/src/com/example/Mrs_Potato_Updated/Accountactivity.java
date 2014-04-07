@@ -18,32 +18,32 @@ import android.widget.Toast;
 public class Accountactivity extends Activity {
     
     /**
-     * 
+     * private instance variable currentAccount.
      */
     private static Account currentAccount;
     
     /**
-     * 
+     * private instance variable accountName.
      */
     private String accountName;
     
     /**
-     * 
+     * private instance variable balance.
      */
     private static double balance;
     
     /**
-     * 
+     * private instance variable lView.
      */
     private RelativeLayout lView;
     
     /**
-     * 
+     * private instance variable accName.
      */
     private TextView accName;
     
     /**
-     * 
+     * private instance variable bal.
      */
     private TextView bal;
 
@@ -52,7 +52,7 @@ public class Accountactivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_);
-        currentAccount = Profile_Activity.getCurrentAccount();
+        currentAccount = Profileactivity.getCurrentAccount();
         balance = currentAccount.getBalance();
         currentAccount.setBalance(balance);
         // //Textviews to show up on xml page
@@ -69,7 +69,7 @@ public class Accountactivity extends Activity {
     public void onResume() {
         super.onResume();
         lView = (RelativeLayout) findViewById(R.id.relativeLayout);
-        currentAccount = Profile_Activity.getCurrentAccount();
+        currentAccount = Profileactivity.getCurrentAccount();
         accountName = currentAccount.getName();
         balance = currentAccount.getBalance();
         accName = new TextView(this);
@@ -90,12 +90,12 @@ public class Accountactivity extends Activity {
     }
 
     /**
-     * 
+     * Starts new intent of TransactionActivity.
      * @param v view
      */
     public void onAddTransaction(View v) {
         try {
-            Intent intent = new Intent(this, Transaction_Activity.class);
+            Intent intent = new Intent(this, Transactionactivity.class);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Can't add Transaction ",
@@ -104,7 +104,7 @@ public class Accountactivity extends Activity {
     }
 
     /**
-     * 
+     * Finishes current activity and takes screen back to ProfileActivity.
      * @param v view
      */
     public void onCancel(View v) {
@@ -112,14 +112,14 @@ public class Accountactivity extends Activity {
     }
 
     /**
-     * 
+     * Returns the account balance.
      * @return balance
      */
     public static double getBalance() {
         return balance;
     }
     /**
-     * 
+     * Returns the current account.
      * @return Account
      */
     public static Account getCurrentAccount() {

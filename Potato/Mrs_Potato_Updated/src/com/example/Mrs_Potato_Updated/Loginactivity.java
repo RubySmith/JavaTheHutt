@@ -11,12 +11,32 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-public class Login_Activity extends Activity {
+/**
+ * 
+ * @author Ruby
+ *
+ */
+public class Loginactivity extends Activity {
+    
+    /**
+     * private instance variable name.
+     */
     private EditText username;
+    
+    /**
+     * private instance variable name.
+     */
     private EditText password;
+    
+    /**
+     * private instance variable name.
+     */
     private DataBaseHandler db = new DataBaseHandler(this);
-    private static Profile p = null;
+    
+    /**
+     * private static instance variable name.
+     */
+    private static Profile profile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +52,29 @@ public class Login_Activity extends Activity {
         getMenuInflater().inflate(R.menu.login_, menu);
         return true;
     }
-
+    
+    /**
+     * Finishes Login Activity.
+     * @param v view
+     */
     public void onCancel(View v) {
         finish();
     }
 
+    /**
+     * Confirms user login and starts new intent of LoginActivity.
+     * @param v view
+     * @throws InvalidUserException checks for invalid user
+     * @throws InvalidPasswordException checks for invalid password
+     */
     public void onLogin(View v) throws InvalidUserException,
             InvalidPasswordException {
         try {
             String userName = username.getText().toString();
             String passWord = password.getText().toString();
             System.out.println(userName + ", " + passWord);
-            p = db.getProfile(userName, passWord);
-            Intent intent = new Intent(this, Profile_Activity.class);
+            profile = db.getProfile(userName, passWord);
+            Intent intent = new Intent(this, Profileactivity.class);
             intent.putExtra("Title", userName);
             startActivity(intent);
             finish();
@@ -59,7 +89,11 @@ public class Login_Activity extends Activity {
         }
     }
 
-    public static Profile getCurrentProfile() {
-        return p;
+    /**
+     * Returns the currentProfile.
+     * @return p
+     */
+    public static Profile getProfile() {
+        return profile;
     }
 }

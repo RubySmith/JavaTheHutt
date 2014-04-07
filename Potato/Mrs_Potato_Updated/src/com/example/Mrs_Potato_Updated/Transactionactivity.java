@@ -12,15 +12,47 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
-public class Transaction_Activity extends Activity {
+/**
+ * 
+ * @author Ruby
+ *
+ */
+public class Transactionactivity extends Activity {
 
+    /**
+     * private instance variable.
+     */
     private EditText am;
+    
+    /**
+     * private instance variable.
+     */
     private EditText cat;
+    
+    /**
+     * private static instance variable.
+     */
     private static Account currentAccount;
+    
+    /**
+     * private static instance variable.
+     */
     private static Profile currentProfile;
+    
+    /**
+     * private instance variable.
+     */
     private GregorianCalendar userTime;
+    
+    /**
+     * private static instance variable.
+     */
     private static Transaction transaction = new Transaction(0, false, null,
-            null); // initialize transaction object to be sent
+            null);
+    
+    /**
+     * private instance variable.
+     */
     private DataBaseHandler db = new DataBaseHandler(this);
 
     @Override
@@ -39,8 +71,8 @@ public class Transaction_Activity extends Activity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         userTime.set(year, month, day);
-        currentAccount = Profile_Activity.getCurrentAccount();
-        currentProfile = Profile_Activity.getCurrentProfile();
+        currentAccount = Profileactivity.getCurrentAccount();
+        currentProfile = Profileactivity.getCurrentProfile();
     }
 
     @Override
@@ -50,13 +82,17 @@ public class Transaction_Activity extends Activity {
         return true;
     }
 
+    /**
+     * Calculates value after depositing amount and then finishes current activity and returns to Account Activity.
+     * @param v view
+     */
     public void onDeposit(View v) {
         try {
             String amount = am.getText().toString();
             String category = cat.getText().toString();
-            double AMOUNT = Double.valueOf(amount);
+            double amountA = Double.valueOf(amount);
             // add transaction to spending report
-            transaction = new Transaction(AMOUNT, true, category, userTime); // leaving
+            transaction = new Transaction(amountA, true, category, userTime); // leaving
                                                                              // name
                                                                              // and
                                                                              // sysTime
@@ -67,45 +103,65 @@ public class Transaction_Activity extends Activity {
                                                                             // line
             // change balance in account
             double c = currentAccount.getBalance();
-            c = c + AMOUNT;
+            c = c + amountA;
             currentAccount.setBalance(c);
             finish();
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             Log.d("Error", e.toString());
         }
     }
 
+    /**
+     * Calculates value after withdrawing amount and then finishes current activity and returns to Account Activity.
+     * @param v view
+     */
     public void onWithdraw(View v) {
         try {
             String amount = am.getText().toString();
-            double AMOUNT = Double.valueOf(amount);
+            double amountA = Double.valueOf(amount);
             String category = cat.getText().toString();
             // add transaction to spending report
-            transaction = new Transaction(AMOUNT, false, category, userTime);
+            transaction = new Transaction(amountA, false, category, userTime);
             db.addTransaction(currentProfile, currentAccount, transaction);
             // change balance in account
             double c = currentAccount.getBalance();
-            c = c - AMOUNT;
+            c = c - amountA;
             currentAccount.setBalance(c);
             finish();
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             Log.d("Error", e.toString());
         }
     }
 
+    /**
+     * Returns the transaction.
+     * @return transaction
+     */
     public static Transaction getTransaction() {
         return transaction;
     }
 
+    /**
+     * Finishes the current activity, Transaction Activity.
+     * @param v view
+     */
     public void onCancel(View v) {
         finish();
     }
 
-    // for testing
+
+    /**
+     * Sets the currentProfile to p.
+     * @param p profile
+     */
     public void setCurrentProfile(Profile p) {
         currentProfile = p;
     }
 
+    /**
+     * Sets the currentAccount to a.
+     * @param a amount
+     */
     public void setCurrentAccount(Account a) {
         currentAccount = a;
     }

@@ -30,37 +30,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.Register_Activity"
+            android:name="com.example.Mrs_Potato_Updated.Registeractivity"
             android:label="@string/title_activity_register_" >
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.Login_Activity"
+            android:name="com.example.Mrs_Potato_Updated.Loginactivity"
             android:label="@string/title_activity_login_" >
+            <intent-filter></intent-filter>
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.Profile_Activity"
+            android:name="com.example.Mrs_Potato_Updated.Profileactivity"
             android:label="@string/title_activity_profile_" >
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.RegisterAccount_Activity"
+            android:name="com.example.Mrs_Potato_Updated.Registeraccountactivity"
             android:label="@string/title_activity_account_" >
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.AccountActivity"
+            android:name="com.example.Mrs_Potato_Updated.Accountactivity"
             android:label="@string/title_activity_account" >
+            <intent-filter></intent-filter>
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.Transaction_Activity"
+            android:name="com.example.Mrs_Potato_Updated.Transactionactivity"
             android:label="@string/title_activity_transaction_" >
         </activity>
         <activity
-            android:name="com.example.Mrs_Potato_Updated.SpendingReport_Activity"
+            android:name="com.example.Mrs_Potato_Updated.Spendingreportactivity"
             android:label="@string/title_activity_spending_report_" >
         </activity>
-        <activity
-            android:name="com.example.Mrs_Potato_Updated.Account_Activity"
-            android:label="@string/title_activity_account_" >
-        </activity>
+
         
         <uses-library 
             android:name="android.test.runner" />
