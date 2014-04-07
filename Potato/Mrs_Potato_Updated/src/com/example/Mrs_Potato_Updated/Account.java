@@ -6,31 +6,33 @@ import java.util.ArrayList;
  * 
  * 
  * @author Ruby
- *
+ * 
  */
 
 public class Account {
-	
-	/**
-	 * private instance variable name.
-	 */
+
+    /**
+     * private instance variable name.
+     */
     private String name;
-    
+
     /**
-	 * private instance variable balance.
-	 */
+     * private instance variable balance.
+     */
     private double balance;
-    
+
     /**
-	 * private instance variable trans.
-	 */
+     * private instance variable trans.
+     */
     private ArrayList<Transaction> trans = new ArrayList<Transaction>();
-    
+
     /**
      * 
      * 
-     * @param aBalance initial balance for account
-     * @param aName name of account
+     * @param aBalance
+     *            initial balance for account
+     * @param aName
+     *            name of account
      */
     public Account(double aBalance, String aName) {
         this.balance = aBalance;
@@ -46,7 +48,7 @@ public class Account {
     public String getName() {
         return name;
     }
-    
+
     /**
      * 
      * 
@@ -58,16 +60,18 @@ public class Account {
 
     /**
      * 
-     * @param aBalance balance of account
+     * @param aBalance
+     *            balance of account
      */
     public void setBalance(double aBalance) {
         this.balance = aBalance;
     }
-    
+
     /**
      * 
      * 
-     * @param aTrans ArrayList which stores all account transactions
+     * @param aTrans
+     *            ArrayList which stores all account transactions
      */
     public void setTrans(ArrayList<Transaction> aTrans) {
         this.trans = aTrans;
