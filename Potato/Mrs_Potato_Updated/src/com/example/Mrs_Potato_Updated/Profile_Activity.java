@@ -50,8 +50,8 @@ public class Profile_Activity extends Activity {
         if (currentAccount != null) { // after actually clicking on an account,
                                       // saves current balance by defining the
                                       // current account
-            currentAccount = Account_Activity.getCurrentAccount();
-            currentAccount.setBalance(Account_Activity.getBalance());
+            currentAccount = Accountactivity.getCurrentAccount();
+            currentAccount.setBalance(Accountactivity.getBalance());
         }
         // generating accounts
         accounts = db.getAccounts(currentProfile);
@@ -88,7 +88,7 @@ public class Profile_Activity extends Activity {
                     .getItemAtPosition(position)); // name of account selected
             currentAccount = map.get(selectedFromList); // account being clicked
             Intent intent = new Intent(Profile_Activity.this,
-                    Account_Activity.class);
+                    Accountactivity.class);
             Profile_Activity.this.startActivity(intent);
         }
     };

@@ -10,12 +10,41 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Account_Activity extends Activity {
+/**
+ * 
+ * @author Ruby
+ *
+ */
+public class Accountactivity extends Activity {
+    
+    /**
+     * 
+     */
     private static Account currentAccount;
+    
+    /**
+     * 
+     */
     private String accountName;
+    
+    /**
+     * 
+     */
     private static double balance;
+    
+    /**
+     * 
+     */
     private RelativeLayout lView;
+    
+    /**
+     * 
+     */
     private TextView accName;
+    
+    /**
+     * 
+     */
     private TextView bal;
 
     @SuppressLint("NewApi")
@@ -60,6 +89,10 @@ public class Account_Activity extends Activity {
         return true;
     }
 
+    /**
+     * 
+     * @param v view
+     */
     public void onAddTransaction(View v) {
         try {
             Intent intent = new Intent(this, Transaction_Activity.class);
@@ -70,14 +103,25 @@ public class Account_Activity extends Activity {
         }
     }
 
+    /**
+     * 
+     * @param v view
+     */
     public void onCancel(View v) {
         finish();
     }
 
+    /**
+     * 
+     * @return balance
+     */
     public static double getBalance() {
         return balance;
     }
-
+    /**
+     * 
+     * @return Account
+     */
     public static Account getCurrentAccount() {
         return currentAccount;
     }
