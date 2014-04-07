@@ -6,20 +6,22 @@ public class Profile {
 	String username;
 	String password;
 	ArrayList<Account> listOFAccounts;
-	public Profile(String username, String password){
+
+	public Profile(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
-	
-	public String getUsername(){
+
+	public String getUsername() {
 		return username;
 	}
-	
-	public String getPassword(){
+
+	public String getPassword() {
 		return password;
 	}
-	
-	public void setAccounts(ArrayList<Account> accounts){ // array of travel plans to show up
-		listOFAccounts  = accounts;
+
+	public void setAccounts(ArrayList<Account> accounts) { // array of travel
+															// plans to show up
+		listOFAccounts = accounts;
 	}
 }

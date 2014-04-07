@@ -14,14 +14,14 @@ public class RegisterAccount_Activity extends Activity {
 	private static Profile currentProfile;
 	private EditText accName;
 	private EditText bal;
-	DataBaseHandler db=new DataBaseHandler(this);
+	DataBaseHandler db = new DataBaseHandler(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registeraccount_);
-		accName= (EditText)findViewById(R.id.editText1);
-		bal = (EditText)findViewById(R.id.editText2);
+		accName = (EditText) findViewById(R.id.editText1);
+		bal = (EditText) findViewById(R.id.editText2);
 		currentProfile = Profile_Activity.getCurrentProfile();
 		System.out.println("Account " + currentProfile.getUsername());
 	}
@@ -33,30 +33,35 @@ public class RegisterAccount_Activity extends Activity {
 		return true;
 	}
 
-	public void onCancel(View v){
+	public void onCancel(View v) {
 		finish();
 	}
+
 	@SuppressLint("NewApi")
-	public void onAddAccount(View v) throws Exception{
+	public void onAddAccount(View v) throws Exception {
 		System.out.println("LOOO");
 		System.out.println("String; " + accName.getText().toString());
-		if (!accName.getText().toString() .isEmpty() && !bal.getText().toString().isEmpty()){
+		if (!accName.getText().toString().isEmpty()
+				&& !bal.getText().toString().isEmpty()) {
 			String accountName = accName.getText().toString();
 			String balance = bal.getText().toString();
 			double balanceD = Double.valueOf(balance);
-			//checking to see correct input
-			System.out.println("name: " + accountName);	
+			// checking to see correct input
+			System.out.println("name: " + accountName);
 			System.out.println("bal: " + balance);
 			Account acc = new Account(balanceD, accountName);
 			try {
 				db.addAccount(currentProfile, acc);
-			}catch (InvalidAccountException e){
-				Toast.makeText(getApplicationContext(), "Account already exists..", Toast.LENGTH_SHORT).show();
+			} catch (InvalidAccountException e) {
+				Toast.makeText(getApplicationContext(),
+						"Account already exists..", Toast.LENGTH_SHORT).show();
 			}
 			finish();
-		}else{
+		} else {
 			System.out.println("lele");
-			Toast.makeText(getApplicationContext(), "Please enter valid Account Name and Balance.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(),
+					"Please enter valid Account Name and Balance.",
+					Toast.LENGTH_SHORT).show();
 		}
 
 	}

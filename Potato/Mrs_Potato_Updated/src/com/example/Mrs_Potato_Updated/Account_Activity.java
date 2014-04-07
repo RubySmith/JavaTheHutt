@@ -14,7 +14,7 @@ public class Account_Activity extends Activity {
 	private static Account currentAccount;
 	private String accountName;
 	private static double balance;
-	private RelativeLayout lView ;
+	private RelativeLayout lView;
 	private TextView accName;
 	private TextView bal;
 
@@ -26,20 +26,20 @@ public class Account_Activity extends Activity {
 		currentAccount = Profile_Activity.getCurrentAccount();
 		balance = currentAccount.getBalance();
 		currentAccount.setBalance(balance);
-//		//Textviews to show up on xml page
-		lView = (RelativeLayout)findViewById(R.id.relativeLayout);
+		// //Textviews to show up on xml page
+		lView = (RelativeLayout) findViewById(R.id.relativeLayout);
 		bal = new TextView(this);
 		bal.setX(122);
 		bal.setY(430);
 		bal.setText("Current Balance: $" + balance);
 		lView.addView(bal);
 	}
-	
+
 	@SuppressLint("NewApi")
-	@Override 
-	public void onResume(){
+	@Override
+	public void onResume() {
 		super.onResume();
-		lView = (RelativeLayout)findViewById(R.id.relativeLayout);
+		lView = (RelativeLayout) findViewById(R.id.relativeLayout);
 		currentAccount = Profile_Activity.getCurrentAccount();
 		accountName = currentAccount.getName();
 		balance = currentAccount.getBalance();
@@ -49,7 +49,7 @@ public class Account_Activity extends Activity {
 		accName.setText("Account Name: " + accountName);
 		bal.setText("Current Balance: $" + balance);
 		currentAccount.setBalance(balance);
-		
+
 		lView.addView(accName);
 	}
 
@@ -59,25 +59,26 @@ public class Account_Activity extends Activity {
 		getMenuInflater().inflate(R.menu.account, menu);
 		return true;
 	}
-	
-	public void onAddTransaction(View v){
-		try{
+
+	public void onAddTransaction(View v) {
+		try {
 			Intent intent = new Intent(this, Transaction_Activity.class);
 			startActivity(intent);
-		}catch(Exception e){
-			Toast.makeText(getApplicationContext(), "Can't add Transaction ", Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(), "Can't add Transaction ",
+					Toast.LENGTH_SHORT).show();
 		}
 	}
-	
-	public void onCancel(View v){
+
+	public void onCancel(View v) {
 		finish();
 	}
-	
-	public static double getBalance(){
+
+	public static double getBalance() {
 		return balance;
 	}
-	
-	public static Account getCurrentAccount(){
+
+	public static Account getCurrentAccount() {
 		return currentAccount;
 	}
 }
