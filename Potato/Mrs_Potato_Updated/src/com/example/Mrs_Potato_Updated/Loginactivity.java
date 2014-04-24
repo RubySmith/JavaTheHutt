@@ -75,7 +75,6 @@ public class Loginactivity extends Activity {
     public void onLogin(View v) throws InvalidUserException,
             InvalidPasswordException {
         try {
-            meow("cat-meow2.mp3");
             String userName = username.getText().toString();
             String passWord = password.getText().toString();
             System.out.println(userName + ", " + passWord);
@@ -83,6 +82,7 @@ public class Loginactivity extends Activity {
             Intent intent = new Intent(this, Profileactivity.class);
             intent.putExtra("Title", userName);
             startActivity(intent);
+            meow("cat-meow2.mp3");
             finish();
         } catch (InvalidUserException e) {
             meow("hiss.mp3");
