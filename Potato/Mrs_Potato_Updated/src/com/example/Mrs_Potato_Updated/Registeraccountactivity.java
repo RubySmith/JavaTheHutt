@@ -1,10 +1,14 @@
 package com.example.Mrs_Potato_Updated;
 
+import java.io.IOException;
+
 import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidAccountException;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.res.AssetFileDescriptor;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -45,6 +49,7 @@ public class Registeraccountactivity extends Activity {
         bal = (EditText) findViewById(R.id.editText2);
         currentProfile = Profileactivity.getCurrentProfile();
         System.out.println("Account " + currentProfile.getUsername());
+        
     }
 
     @Override
@@ -59,6 +64,7 @@ public class Registeraccountactivity extends Activity {
      * @param v view
      */
     public void onCancel(View v) {
+        meow("hiss.mp3");
         finish();
     }
 
@@ -86,13 +92,34 @@ public class Registeraccountactivity extends Activity {
                 Toast.makeText(getApplicationContext(),
                         "Account already exists..", Toast.LENGTH_SHORT).show();
             }
+            meow("cat-meow2.mp3");
             finish();
         } else {
-            System.out.println("lele");
+            meow("hiss.mp3");
             Toast.makeText(getApplicationContext(),
                     "Please enter valid Account Name and Balance.",
                     Toast.LENGTH_SHORT).show();
         }
 
+    }
+    private void meow(String type) {
+        final MediaPlayer mp = new MediaPlayer();
+        if(mp.isPlaying())
+        {  
+            mp.stop();
+            mp.reset();
+        } 
+        try {
+    
+            AssetFileDescriptor afd;
+            afd = getAssets().openFd(type);
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

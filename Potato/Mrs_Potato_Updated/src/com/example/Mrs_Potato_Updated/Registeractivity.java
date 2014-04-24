@@ -1,12 +1,15 @@
 package com.example.Mrs_Potato_Updated;
 
-import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidPasswordException;
+import java.io.IOException;
 
+import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidPasswordException;
 import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidUserException;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -44,6 +47,7 @@ public class Registeractivity extends Activity {
         setContentView(R.layout.activity_register_);
         username = (EditText) findViewById(R.id.editText1);
         password = (EditText) findViewById(R.id.editText2);
+        
     }
 
     @Override
@@ -66,6 +70,7 @@ public class Registeractivity extends Activity {
      * @param v view
      */
     public void onCancel(View v) {
+        meow("hiss.mp3");
         finish();
     }
 
@@ -79,15 +84,18 @@ public class Registeractivity extends Activity {
             InvalidPasswordException {
         String userName = username.getText().toString();
         if (userName.length() < 2) {
+            meow("hiss.mp3");
             Toast.makeText(getApplicationContext(), "Username too short.",
                     Toast.LENGTH_SHORT).show();
         }
         String passWord = password.getText().toString();
         if (passWord.length() < 2) {
+            meow("hiss.mp3");
             Toast.makeText(getApplicationContext(), "Password too short",
                     Toast.LENGTH_SHORT).show();
         }
         if (passWord.length() >= 2 && userName.length() >= 2) {
+            meow("cat-meow2.mp3");
             try {
                 currentProfile = new Profile(userName, passWord);
                 System.out.println(currentProfile.getUsername() + ", "
@@ -97,14 +105,32 @@ public class Registeractivity extends Activity {
                 startActivity(intent); // problem
                 finish();
             } catch (InvalidUserException e) {
+                meow("hiss.mp3");
                 Toast.makeText(getApplicationContext(),
                         "Username taken. Please choose again.",
-                        Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(),
-                        "Invalid Password. Please choose again.",
                         Toast.LENGTH_SHORT).show();
             }
         }
     }
+    private void meow(String type) {
+        final MediaPlayer mp = new MediaPlayer();
+        if(mp.isPlaying())
+        {  
+            mp.stop();
+            mp.reset();
+        } 
+        try {
+    
+            AssetFileDescriptor afd;
+            afd = getAssets().openFd(type);
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -169,7 +170,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         // insert username and password into table
         try {
             db.insertOrThrow(TABLE_USERS, null, values);
-        } catch (Exception e) {
+        } catch (SQLiteConstraintException e) {
             throw new InvalidUserException("User already exists in database");
         } finally {
             db.close(); // Closing database connection
@@ -241,7 +242,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         // insert username and password into table
         try {
             db.insertOrThrow(TABLE_ACCOUNTS, null, values);
-        } catch (Exception e) {
+        } catch (SQLiteConstraintException e) {
             throw new InvalidAccountException(
                     "Identical account already exists for user");
         } finally {

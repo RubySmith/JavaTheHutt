@@ -1,11 +1,15 @@
 package com.example.Mrs_Potato_Updated;
 
+import java.io.IOException;
+
 import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidPasswordException;
 import com.example.Mrs_Potato_Updated.DataBaseHandler.InvalidUserException;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -58,6 +62,7 @@ public class Loginactivity extends Activity {
      * @param v view
      */
     public void onCancel(View v) {
+        meow("hiss.mp3");
         finish();
     }
 
@@ -70,6 +75,7 @@ public class Loginactivity extends Activity {
     public void onLogin(View v) throws InvalidUserException,
             InvalidPasswordException {
         try {
+            meow("cat-meow2.mp3");
             String userName = username.getText().toString();
             String passWord = password.getText().toString();
             System.out.println(userName + ", " + passWord);
@@ -79,13 +85,13 @@ public class Loginactivity extends Activity {
             startActivity(intent);
             finish();
         } catch (InvalidUserException e) {
+            meow("hiss.mp3");
             Toast.makeText(getApplicationContext(), "Invalid Username ",
                     Toast.LENGTH_SHORT).show();
         } catch (InvalidPasswordException e) {
+            meow("hiss.mp3");
             Toast.makeText(getApplicationContext(), "Invalid Password",
                     Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Log.d("Error", e.toString());
         }
     }
 
@@ -95,5 +101,25 @@ public class Loginactivity extends Activity {
      */
     public static Profile getProfile() {
         return profile;
+    }
+    private void meow(String type) {
+        final MediaPlayer mp = new MediaPlayer();
+        if(mp.isPlaying())
+        {  
+            mp.stop();
+            mp.reset();
+        } 
+        try {
+    
+            AssetFileDescriptor afd;
+            afd = getAssets().openFd(type);
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -141,4 +141,5 @@ public class Spendingreportactivity extends Activity {
         getMenuInflater().inflate(R.menu.spending_report_, menu);
         return true;
     }
+    
 }

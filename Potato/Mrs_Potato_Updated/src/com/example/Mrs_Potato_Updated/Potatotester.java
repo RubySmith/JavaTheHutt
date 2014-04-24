@@ -39,6 +39,7 @@ public class Potatotester extends
     }
 
     /**
+     * Will Cely
      * Tests the mainActivity.
      */
     public void testMain() {
@@ -46,7 +47,7 @@ public class Potatotester extends
         solo.clickOnButton("Login");
         solo.waitForDialogToClose(10000);
         solo.waitForActivity("Loginactivity", 200);
-        solo.assertCurrentActivity("Failure to start Second Activity",
+        solo.assertCurrentActivity("Failure to start Login Activity",
                 Loginactivity.class);
         solo.sleep(200);
         solo.goBack();
@@ -54,10 +55,10 @@ public class Potatotester extends
         // testing register
         solo.clickOnButton("Register");
         solo.sleep(200);
-        solo.typeText((EditText) solo.getView(R.id.editText1), "NewUser6");
+        solo.typeText((EditText) solo.getView(R.id.editText1), "NewUser12");
         solo.typeText((EditText) solo.getView(R.id.editText2), "password");
         solo.clickOnButton("Register");
-        solo.waitForActivity("Profile_Activity");
+        solo.waitForActivity("Profileactivity");
         solo.assertCurrentActivity("Failure to start Profile Activity",
                 Profileactivity.class);
         solo.sleep(300);
@@ -65,6 +66,7 @@ public class Potatotester extends
     }
 
     /**
+     * Shehmeer Jiwani
      * Tests the loginActivity.
      */
     public void testLogin() {
@@ -79,8 +81,8 @@ public class Potatotester extends
         solo.enterText((EditText) solo.getView(R.id.editText2), "poopie");
         solo.clickOnButton("Login");
         solo.waitForDialogToClose(10000);
-        solo.waitForActivity("Profile_Activity", 200);
-        solo.assertCurrentActivity("Failure to start Third Activity",
+        solo.waitForActivity("Profileactivity", 200);
+        solo.assertCurrentActivity("Failure to start Profile Activity",
                 Profileactivity.class);
         solo.sleep(200);
         solo.clickOnButton("X");
@@ -94,31 +96,29 @@ public class Potatotester extends
     }
 
     /**
+     * 
      * Local method to login.
      */
     private void login() {
-        try {
-            Intent intent = new Intent(getInstrumentation().getContext(),
-                    Loginactivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getInstrumentation().startActivitySync(intent);
-            solo.sleep(1000);
-            solo.assertCurrentActivity("Failure to start Second Activity",
-                    Loginactivity.class);
-            solo.enterText((EditText) solo.getView(R.id.editText1), "poopie");
-            solo.enterText((EditText) solo.getView(R.id.editText2), "poopie");
-            solo.clickOnButton("Login");
-            solo.waitForDialogToClose(1000);
-            solo.waitForActivity("Profile_Activity", 200);
-            solo.assertCurrentActivity("Failure to start Third Activity",
-                    Profileactivity.class);
-            solo.sleep(70);
-        } catch (Exception e) {
-            Log.d("ERROR", e.toString());
-        }
+        Intent intent = new Intent(getInstrumentation().getContext(),
+                Loginactivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getInstrumentation().startActivitySync(intent);
+        solo.sleep(1000);
+        solo.assertCurrentActivity("Failure to start Login Activity",
+                Loginactivity.class);
+        solo.enterText((EditText) solo.getView(R.id.editText1), "poopie");
+        solo.enterText((EditText) solo.getView(R.id.editText2), "poopie");
+        solo.clickOnButton("Login");
+        solo.waitForDialogToClose(1000);
+        solo.waitForActivity("Profileactivity", 200);
+        solo.assertCurrentActivity("Failure to start Profile Activity",
+                Profileactivity.class);
+        solo.sleep(70);
     }
 
     /**
+     * Ruby Smith
      * Tests AddAccount method.
      */
     public void testAddAccount() {
@@ -126,24 +126,24 @@ public class Potatotester extends
         solo.clickOnButton("Add Account");
         solo.waitForDialogToClose(10000);
         // testing Add Account
-        solo.waitForActivity("RegisterAccount_Activity", 200);
+        solo.waitForActivity("Registeraccountactivity", 200);
         solo.assertCurrentActivity("Failure to start Register Activity",
                 Registeraccountactivity.class);
-        solo.enterText((EditText) solo.getView(R.id.editText1), "Account4");
+        solo.enterText((EditText) solo.getView(R.id.editText1), "Account7");
         solo.enterText((EditText) solo.getView(R.id.editText2), "20");
         solo.clickOnButton("Add Account");
-        solo.waitForActivity("Profile_Activity", 200);
+        solo.waitForActivity("Profileactivity", 200);
         solo.assertCurrentActivity("Failure to start Profile_Activity",
                 Profileactivity.class);
         solo.sleep(200);
         // testing cancel Add Account
         solo.clickOnButton("Add Account");
         solo.waitForDialogToClose(10000);
-        solo.waitForActivity("RegisterAccount_Activity", 200);
+        solo.waitForActivity("Registeraccountactivity", 200);
         solo.assertCurrentActivity("Failure to start Register_Activity",
                 Registeraccountactivity.class);
         solo.clickOnButton("Cancel");
-        solo.waitForActivity("Profile_Activity", 200);
+        solo.waitForActivity("Profileactivity", 200);
         solo.assertCurrentActivity("Failure to start Profile_Activity",
                 Profileactivity.class);
         solo.sleep(200);
@@ -151,6 +151,7 @@ public class Potatotester extends
     }
 
     /**
+     * Michael Glover
      * Tests profileActivity.
      */
     public void testProfile() {
@@ -170,12 +171,12 @@ public class Potatotester extends
         solo.clickOnButton("Generate Spending Report");
         solo.sleep(200);
         solo.goBack();
-        solo.clickOnButton("X");
         solo.sleep(300);
         solo.finishOpenedActivities();
     }
 
     /**
+     * Katherine Pham
      * Tests addTransaction method.
      */
     public void testAddTransactions() {
@@ -187,29 +188,28 @@ public class Potatotester extends
             solo.clickOnView(v); // clicking on account
             // testing deposit
             solo.clickOnButton("Add Transaction");
-            solo.waitForActivity("Transaction_Activity");
+            solo.waitForActivity("Transactionactivity");
             solo.typeText((EditText) solo.getView(R.id.editText1), "Paycheck");
             solo.typeText((EditText) solo.getView(R.id.editText2), "20");
             solo.clickOnButton("Deposit");
-            solo.waitForActivity("Account_Activity");
+            solo.waitForActivity("Accountactivity");
             solo.sleep(150);
             // testing withdraw
             solo.clickOnButton("Add Transaction");
-            solo.waitForActivity("Transaction_Activity");
+            solo.waitForActivity("Transactionactivity");
             solo.typeText((EditText) solo.getView(R.id.editText1), "Food");
             solo.typeText((EditText) solo.getView(R.id.editText2), "20");
             solo.clickOnButton("Withdraw");
-            solo.waitForActivity("Account_Activity");
-            solo.waitForActivity("Account_Activity");
+            solo.waitForActivity("Accountactivity");
             solo.sleep(150);
             // testing cancel
             solo.clickOnButton("Add Transaction");
-            solo.waitForActivity("Transaction_Activity");
+            solo.waitForActivity("Transactionactivity");
             solo.typeText((EditText) solo.getView(R.id.editText1),
                     "Shananigans");
             solo.typeText((EditText) solo.getView(R.id.editText2), "100");
             solo.clickOnButton("Cancel");
-            solo.waitForActivity("Account_Activity");
+            solo.waitForActivity("Accountactivity");
             solo.sleep(200);
             solo.finishOpenedActivities();
         }

@@ -1,16 +1,20 @@
 package com.example.Mrs_Potato_Updated;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.res.AssetFileDescriptor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * 
@@ -87,6 +91,7 @@ public class Transactionactivity extends Activity {
      * @param v view
      */
     public void onDeposit(View v) {
+        meow("cat-meow2.mp3");
         try {
             String amount = am.getText().toString();
             String category = cat.getText().toString();
@@ -107,7 +112,9 @@ public class Transactionactivity extends Activity {
             currentAccount.setBalance(c);
             finish();
         } catch (NumberFormatException e) {
-            Log.d("Error", e.toString());
+            meow("hiss.mp3");
+            Toast.makeText(getApplicationContext(), "Invalid amount. ",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -116,6 +123,7 @@ public class Transactionactivity extends Activity {
      * @param v view
      */
     public void onWithdraw(View v) {
+        meow("cat-meow2.mp3");
         try {
             String amount = am.getText().toString();
             double amountA = Double.valueOf(amount);
@@ -129,7 +137,9 @@ public class Transactionactivity extends Activity {
             currentAccount.setBalance(c);
             finish();
         } catch (NumberFormatException e) {
-            Log.d("Error", e.toString());
+            meow("hiss.mp3");
+            Toast.makeText(getApplicationContext(), "Invalid amount ",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -146,6 +156,7 @@ public class Transactionactivity extends Activity {
      * @param v view
      */
     public void onCancel(View v) {
+        meow("hiss.mp3");
         finish();
     }
 
@@ -164,5 +175,25 @@ public class Transactionactivity extends Activity {
      */
     public void setCurrentAccount(Account a) {
         currentAccount = a;
+    }
+    private void meow(String type) {
+        final MediaPlayer mp = new MediaPlayer();
+        if(mp.isPlaying())
+        {  
+            mp.stop();
+            mp.reset();
+        } 
+        try {
+    
+            AssetFileDescriptor afd;
+            afd = getAssets().openFd(type);
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
